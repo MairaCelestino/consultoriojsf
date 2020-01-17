@@ -33,6 +33,12 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 
+.img-responsive  {
+	max-width: 100%;
+	height: auto;
+	display: block;
+} 
+
 /*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
@@ -508,4 +514,10 @@ iframe {
 .ui-calendar {
 	border: none;
 	padding: 0;
+}
+
+.topo{
+	background-image: url(inner_banner.png);
+	height:200px;
+	margin:0 auto;
 }
