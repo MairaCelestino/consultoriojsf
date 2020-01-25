@@ -521,3 +521,12 @@ iframe {
 	height:200px;
 	margin:0 auto;
 }
+
+.rodape {
+    font-size: 10px;
+    width: 98%;
+    font-weight: bold;
+    text-align: right;
+    position: static;
+    bottom: 0;
+}

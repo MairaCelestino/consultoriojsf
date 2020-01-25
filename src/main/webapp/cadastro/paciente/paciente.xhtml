@@ -1,65 +1,56 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<h:head>
-    <title>Consultório - Paciente</title>
-    <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/icons/favicon.ico" />
-    <h:outputStylesheet library="vendor" name="/bootstrap/css/bootstrap.min.css" />
-    <h:outputStylesheet library="css" name="/vendor/bootstrap/css/bootstrap.min.css" />
-    <h:outputStylesheet library="css" name="main.css" />
-</h:head>
-<h:body>
-    <div class="container">
-        <h1>Aqui deve estar o menu</h1>
-
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:define name="corpo">
         <p:panel header="Cadastrar Paciente">
             <h:form>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <p:outputLabel>Nome: </p:outputLabel>
-                        <p:inputText placeholder="Digite seu nome" styleClass="form-control" />
+                        <p:inputText placeholder="Digite seu nome" styleClass="form-control"/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <p:outputLabel>Gênero: </p:outputLabel>
                         <p:selectOneRadio id="genero" unselectable="true">
-                            <f:selectItem itemLabel="Masculino" itemValue="M" />
-                            <f:selectItem itemLabel="Feminino" itemValue="F" />
+                            <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                            <f:selectItem itemLabel="Feminino" itemValue="F"/>
                         </p:selectOneRadio>
                     </div>
                     <div class="form-group col-md-3">
-                        <p:outputLabel for="datanascimento" value="Data Nascimento: " />
-                        <p:calendar id="datanascimento" locale="br" navigator="true" pattern="dd.MM.yyyy" />
+                        <p:outputLabel for="datanascimento" value="Data Nascimento: "/>
+                        <p:calendar id="datanascimento" locale="pt" navigator="true" pattern="dd.MM.yyyy"/>
                     </div>
                     <div class="form-group col-md-2">
-                        <p:outputLabel for="identificacao" value="Identificação" />
+                        <p:outputLabel for="identificacao" value="Identificação"/>
                         <p:selectOneMenu id="identificacao" style="width: 90%;">
-                            <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="NIF" itemValue="NIF" />
-                            <f:selectItem itemLabel="Passaporte" itemValue="Passaporte" />
-                            <f:selectItem itemLabel="BI" itemValue="BI" />
-                            <f:selectItem itemLabel="AR" itemValue="AR" />
+                            <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="NIF" itemValue="NIF"/>
+                            <f:selectItem itemLabel="Passaporte" itemValue="Passaporte"/>
+                            <f:selectItem itemLabel="BI" itemValue="BI"/>
+                            <f:selectItem itemLabel="AR" itemValue="AR"/>
                         </p:selectOneMenu>
                     </div>
                     <div class="form-group col-md-4">
-                        <p:outputLabel for="documento" value="Nº do documento " />
-                        <p:inputText id="documento" styleClass="form-control" style="height: auto;" />
+                        <p:outputLabel for="documento" value="Nº do documento "/>
+                        <p:inputText id="documento" styleClass="form-control" style="height: auto;"/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <p:commandButton value="Salvar" title="Gravar registro" styleClass="btn btn-primary"
-                            style="width:90%;" />
+                                         style="width:90%;"/>
                     </div>
                     <div class="form-group col-md-2">
                         <p:commandButton value="Limpar" type="reset" title="Limpa registro" styleClass="btn btn-primary"
-                            style="width:90%;" />
+                                         style="width:90%;"/>
                     </div>
                 </div>
             </h:form>
         </p:panel>
-    </div>
-</h:body>
-</html>
+    </ui:define>
+</ui:composition>

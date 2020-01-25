@@ -1,38 +1,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Consultório - Login</title>
-    <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/icons/favicon.ico" />
-
-    <h:outputStylesheet library="vendor" name="/bootstrap/css/bootstrap.min.css" />
-    <h:outputStylesheet library="css" name="/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/icons/favicon.ico"/>
+    <h:outputStylesheet library="vendor" name="/bootstrap/css/bootstrap.min.css"/>
 </h:head>
 <h:body>
-
-    <div class="container">
+    <p:growl autoUpdate="true"/>
+    <div class="container" style="width: 17%; margin-top: 7%;">
         <h:form>
-            <div class="row">
-                <p:focus for="user" />
-                <div class="col-4" style="margin: 0 auto;">
-                    <div class="form-group">
-                        <h3>Login</h3>
-                        <h:outputText value="User" />
-                        <h:inputText id="user" title="Digite seu login" value="#{loginBean.user}"
-                            styleClass="form-control" />
+            <p:focus for="user"/>
+            <div class="form-group row row flex-items-xs-center">
+                <div>
+                    <div class="form-group row">
+                        <p:outputLabel value="User"/>
+                        <p:inputText id="user" title="Digite seu User" value="#{loginBean.user}"
+                                     styleClass="form-control"/>
                     </div>
-                    <div class="form-group">
-                        <h:outputText value="Password" />
-                        <h:inputSecret id="password" title="Digite seu pasword" value="#{loginBean.password}"
-                            styleClass="form-control" />
+                    <div class="form-group row">
+                        <p:outputLabel value="Password"/>
+                        <p:password id="password" title="Digite seu pasword" value="#{loginBean.password}"
+                                    styleClass="form-control"/>
                     </div>
-                    <h:commandButton action="#{loginBean.autenticar()}" title="Acessar o sistema" value="Login"
-                        styleClass="btn btn-primary" />
-                    <p:messages id="messages" closable="true">
-                        <p:autoUpdate />
-                    </p:messages>
+                    <div align="center" class="form-group row">
+                        <p:commandButton action="#{loginBean.autenticar()}" title="Acessar o sistema" value="Login"
+                                         styleClass="btn btn-primary btn-sm"/>
+                        <p:link value="Esqueceu a senha?" disabled="true" style="margin-left: 10px;"/>
+                    </div>
                 </div>
             </div>
         </h:form>
     </div>
-    <h:outputScript library="vendor" name="/bootstrap/js/bootstrap.min.js" />
+    <h:outputScript library="vendor" name="/bootstrap/js/bootstrap.min.js"/>
 </h:body>
 </html>
