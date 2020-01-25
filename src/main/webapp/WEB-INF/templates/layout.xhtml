@@ -18,8 +18,9 @@
     <p:growl life="5000" autoUpdate="true"/>
     <p:ajaxStatus onstart="PF('status').show();"
                   onsuccess="PF('status').hide()"/>
-    <p:dialog widgetVar="status" closable="false" resizable="false">
-        Aguarde...
+    <p:dialog widgetVar="status" closable="false" resizable="false" header="Por favor, Aguarde..." modal="true"
+              style="font-size: small" responsive="true">
+        <p:progressBar id="progressBarIndeterminate" style="height:6px" mode="indeterminate"/>
     </p:dialog>
     <div class="container-fluid">
         <h:form>
@@ -39,7 +40,7 @@
                     </p:submenu>
                     <f:facet name="options">
                         <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Pesquisar"/>
-                        <p:commandButton value="Logout" icon="pi pi-home" action="#{loginBean.logout()}"/>
+                        <p:commandButton value="Logout" action="#{loginBean.logout()}"/>
                     </f:facet>
                 </p:menubar>
             </div>
