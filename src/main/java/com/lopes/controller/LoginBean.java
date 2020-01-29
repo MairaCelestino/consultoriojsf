@@ -16,38 +16,44 @@ public class LoginBean implements Serializable {
     private String password;
     private String user;
 
-    public String autenticar() {
+    public String autenticar()
+    {
         if (this.getUser().trim().equalsIgnoreCase("ADMIN") && this.getPassword().equalsIgnoreCase("ADMIN"))
             return "home?faces-redirect=true";
-        else {
+        else
+        {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Credenciais inválidas", "Please enter correct username and Password"));
             return "";
         }
     }
 
-    public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext()
-                .invalidateSession();
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public String getUser()
+    {
+        return user;
+    }
+
+    public String logout()
+    {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout com sucesso!", ""));
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "/login?faces-redirect=true";
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setPassword(String password) {
+    public void setPassword(String password)
+    {
         this.password = password;
     }
 
-    public void setUser(String user) {
+    public void setUser(String user)
+    {
         this.user = user;
     }
 
