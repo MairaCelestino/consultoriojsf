@@ -10,10 +10,14 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <title><ui:insert name="titulo">Consultório</ui:insert></title>
-    <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/img.jpg"/>
     <h:outputStylesheet library="vendor" name="/bootstrap/css/bootstrap.min.css"/>
     <h:outputStylesheet library="css" name="main.css"/>
 </h:head>
+<div class="text-center">
+    <h:graphicImage library="images" name="log1.jpeg" width="1000" height="400" alt="Responsive image"/>
+</div>
+<br></br>
 <h:body>
     <p:growl life="5000" autoUpdate="true"/>
     <p:ajaxStatus onstart="PF('status').show();"
@@ -23,7 +27,9 @@
         <p:progressBar id="progressBarIndeterminate" style="height:6px" mode="indeterminate"/>
     </p:dialog>
     <div class="container-fluid">
+
         <h:form>
+
             <div class="container">
                 <p:menubar>
                     <p:menuitem url="../../home.xhtml">

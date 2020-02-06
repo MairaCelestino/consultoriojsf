@@ -41,8 +41,8 @@ public class LoginBean implements Serializable {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout com sucesso!", ""));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "\n" +
+                        "Logout successfully!", ""));
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "/login?faces-redirect=true";
     }
