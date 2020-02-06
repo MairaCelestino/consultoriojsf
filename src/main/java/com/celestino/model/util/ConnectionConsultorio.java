@@ -1,19 +1,16 @@
-package com.celestino.conection;
+package com.celestino.model.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ConnectionConsultorio {
 
     public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("jdbc:mysql://localhost/consultorio_bd");
-            System.out.println("Conectando ao banco");
-            return DriverManager.getConnection("com.mysql.jdbc.Driver", "root", "root");
 
+        try {
+            System.out.println("Conectando ao banco");
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/CLINIC_DB", "root", "M@ira160491");
         } catch (ClassNotFoundException e) {
             System.out.println("Não conectado");
             throw new SQLException(e.getMessage());

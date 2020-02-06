@@ -1,4 +1,4 @@
-package com.lopes.controller;
+package com.celestino.controller;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
