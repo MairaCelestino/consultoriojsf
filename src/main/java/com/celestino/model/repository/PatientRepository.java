@@ -23,6 +23,7 @@ public class PatientRepository {
             p.setId(rs.getInt(1));
             p.setPatientName(rs.getString(2));
             p.setGender(rs.getString(3));
+            p.setBornDate(rs.getDate(4));
 
             patients.add(p);
         }

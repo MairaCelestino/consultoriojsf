@@ -5,8 +5,13 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:define name="corpo">
+        <link
+                href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                rel="stylesheet"/>
         <p:panel header="Cadastrar Paciente">
             <h:form>
+                <p:growl id="msgs" showDetail="true"
+                         skipDetailIfEqualsSummary="true"/>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <p:outputLabel>Nome: </p:outputLabel>
@@ -25,6 +30,8 @@
                         <p:outputLabel for="datanascimento" value="Data Nascimento: "/>
                         <p:calendar id="datanascimento" locale="pt" navigator="true" pattern="dd.MM.yyyy"/>
                     </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group col-md-2">
                         <p:outputLabel for="identificacao" value="Identificação"/>
                         <p:selectOneMenu id="identificacao" style="width: 90%;">
@@ -35,9 +42,126 @@
                             <f:selectItem itemLabel="AR" itemValue="AR"/>
                         </p:selectOneMenu>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <p:outputLabel for="documento" value="Nº do documento "/>
                         <p:inputText id="documento" styleClass="form-control" style="height: auto;"/>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <p:outputLabel for="nacionalidade" value="Nacionalidade: "/>
+                        <p:selectOneMenu id="nacionalidade" style="width: 90%;">
+                            <f:selectItem itemLabel="Selecione" itemValue=""
+                                          noSelectionOption="true"/>
+                            <f:selectItem itemLabel="Afegão" itemValue="Afegão"/>
+                            <f:selectItem itemLabel="Alemão" itemValue="Alemão"/>
+                            <f:selectItem itemLabel="Americano" itemValue="Americano"/>
+                            <f:selectItem itemLabel="Angolano" itemValue="Angolano"/>
+                            <f:selectItem itemLabel="Antiguano" itemValue="Antiguano"/>
+                            <f:selectItem itemLabel="Árabe" itemValue="Árabe"/>
+                            <f:selectItem itemLabel="Argélia" itemValue="Argélia"/>
+                            <f:selectItem itemLabel="Argentino" itemValue="Argentino"/>
+                            <f:selectItem itemLabel="Armeno" itemValue="Armeno"/>
+                            <f:selectItem itemLabel="Australiano" itemValue="Australiano"/>
+                            <f:selectItem itemLabel="Austríaco" itemValue="Austríaco"/>
+                            <f:selectItem itemLabel="Bahamense" itemValue="Bahamense"/>
+                            <f:selectItem itemLabel="Bangladesh" itemValue="Bangladesh"/>
+                            <f:selectItem itemLabel="Barbadiano" itemValue="Barbadiano"/>
+                            <f:selectItem itemLabel="Bechuano" itemValue="Bechuano"/>
+                            <f:selectItem itemLabel="Belga" itemValue="Belga"/>
+                            <f:selectItem itemLabel="Belizenho" itemValue="Belizenho"/>
+                            <f:selectItem itemLabel="Boliviano" itemValue="Boliviano"/>
+                            <f:selectItem itemLabel="Brasileiro" itemValue="Brasileiro"/>
+                            <f:selectItem itemLabel="Britânico" itemValue="Britânico"/>
+                            <f:selectItem itemLabel="Camaronense" itemValue="Camaronense"/>
+                            <f:selectItem itemLabel="Canadense" itemValue="Canadense"/>
+                            <f:selectItem itemLabel="Chinês" itemValue="Chinês"/>
+                            <f:selectItem itemLabel="Cingalês" itemValue="Cingalês"/>
+                            <f:selectItem itemLabel="Colombiano" itemValue="Colombiano"/>
+                            <f:selectItem itemLabel="Comorense" itemValue="Comorense"/>
+                            <f:selectItem itemLabel="Costarriquenho" itemValue="Costarriquenho"/>
+                            <f:selectItem itemLabel="Croata" itemValue="Croata"/>
+                            <f:selectItem itemLabel="Cubano" itemValue="Cubano"/>
+                            <f:selectItem itemLabel="Dinamarquês" itemValue="Dinamarquês"/>
+                            <f:selectItem itemLabel="Dominicana" itemValue="Dominicana "/>
+                            <f:selectItem itemLabel="Dominicano" itemValue="Dominicano"/>
+                            <f:selectItem itemLabel="Egípcio" itemValue="Egípcio"/>
+                            <f:selectItem itemLabel="Equatoriano" itemValue="Equatoriano"/>
+                            <f:selectItem itemLabel="Escocês" itemValue="Escocês"/>
+                            <f:selectItem itemLabel="Eslovaco" itemValue="Eslovaco"/>
+                            <f:selectItem itemLabel="Esloveno" itemValue="Esloveno"/>
+                            <f:selectItem itemLabel="Espanhol" itemValue="Espanhol"/>
+                            <f:selectItem itemLabel="Francês" itemValue="Francês"/>
+                            <f:selectItem itemLabel="Galês" itemValue="Galês"/>
+                            <f:selectItem itemLabel="Ganés" itemValue="Ganés"/>
+                            <f:selectItem itemLabel="Granadino" itemValue="Granadino"/>
+                            <f:selectItem itemLabel="Grego" itemValue="Grego"/>
+                            <f:selectItem itemLabel="Guatemalteco" itemValue="Guatemalteco"/>
+                            <f:selectItem itemLabel="Guianense" itemValue="Guianense"/>
+                            <f:selectItem itemLabel="Guianês" itemValue="Guianês"/>
+                            <f:selectItem itemLabel="Haitiano" itemValue="Haitiano"/>
+                            <f:selectItem itemLabel="Holandês" itemValue="Holandês"/>
+                            <f:selectItem itemLabel="Hondurenho" itemValue="Hondurenho"/>
+                            <f:selectItem itemLabel="Húngaro" itemValue="Húngaro"/>
+                            <f:selectItem itemLabel="Iemenita" itemValue="Iemenita"/>
+                            <f:selectItem itemLabel="Indiano" itemValue="Indiano"/>
+                            <f:selectItem itemLabel="Indonésio" itemValue="Indonésio"/>
+                            <f:selectItem itemLabel="Inglês" itemValue="Inglês"/>
+                            <f:selectItem itemLabel="Iraniano" itemValue="Iraniano"/>
+                            <f:selectItem itemLabel="Iraquiano" itemValue="Iraquiano"/>
+                            <f:selectItem itemLabel="Irlandês" itemValue="Irlandês"/>
+                            <f:selectItem itemLabel="Israelita" itemValue="Israelita"/>
+                            <f:selectItem itemLabel="Italiano" itemValue="Italiano"/>
+                            <f:selectItem itemLabel="Jamaicano" itemValue="Jamaicano"/>
+                            <f:selectItem itemLabel="Japonês" itemValue="Japonês"/>
+                            <f:selectItem itemLabel="Líbio" itemValue="Líbio"/>
+                            <f:selectItem itemLabel="Malaio" itemValue="Malaio"/>
+                            <f:selectItem itemLabel="Marfinense" itemValue="Marfinense"/>
+                            <f:selectItem itemLabel="Marroquino" itemValue="Marroquino"/>
+                            <f:selectItem itemLabel="Mexicano" itemValue="Mexicano"/>
+                            <f:selectItem itemLabel="Moçambicano" itemValue="Moçambicano"/>
+                            <f:selectItem itemLabel="Neozelandês" itemValue="Neozelandês"/>
+                            <f:selectItem itemLabel="Nepalês" itemValue="Nepalês"/>
+                            <f:selectItem itemLabel="Nicaraguense" itemValue="Nicaraguense"/>
+                            <f:selectItem itemLabel="Nigeriano" itemValue="Nigeriano "/>
+                            <f:selectItem itemLabel="Norte-coreano" itemValue="Norte-coreano"/>
+                            <f:selectItem itemLabel="Noruego" itemValue="Noruego"/>
+                            <f:selectItem itemLabel="Omanense" itemValue="Omanense"/>
+                            <f:selectItem itemLabel="Palestino" itemValue="Palestino"/>
+                            <f:selectItem itemLabel="Panamenho" itemValue="Panamenho"/>
+                            <f:selectItem itemLabel="Paquistanês" itemValue="Paquistanês"/>
+                            <f:selectItem itemLabel="Paraguaio" itemValue="Paraguaio"/>
+                            <f:selectItem itemLabel="Peruano" itemValue="Peruano"/>
+                            <f:selectItem itemLabel="Polonês" itemValue="Polonês"/>
+                            <f:selectItem itemLabel="Portorriquenho" itemValue="Portorriquenho"/>
+                            <f:selectItem itemLabel="Português" itemValue="Português"/>
+                            <f:selectItem itemLabel="Qatarense" itemValue="Qatarense"/>
+                            <f:selectItem itemLabel="Queniano" itemValue="Queniano"/>
+                            <f:selectItem itemLabel="Romeno" itemValue="Romeno"/>
+                            <f:selectItem itemLabel="Ruandês" itemValue="Ruandês"/>
+                            <f:selectItem itemLabel="Russo" itemValue="Russo"/>
+                            <f:selectItem itemLabel="Salvadorenho" itemValue="Salvadorenho"/>
+                            <f:selectItem itemLabel="Santa-lucense" itemValue="Santa-lucense"/>
+                            <f:selectItem itemLabel="São-cristovense" itemValue="São-cristovense"/>
+                            <f:selectItem itemLabel="São-vicentino" itemValue="São-vicentino "/>
+                            <f:selectItem itemLabel="Saudita" itemValue="Saudita"/>
+                            <f:selectItem itemLabel="Sérvio" itemValue="Sérvio"/>
+                            <f:selectItem itemLabel="Sírio" itemValue="Sírio"/>
+                            <f:selectItem itemLabel="Somali" itemValue="Somali"/>
+                            <f:selectItem itemLabel="Sueco" itemValue="Sueco"/>
+                            <f:selectItem itemLabel="Suíço" itemValue="Suíço"/>
+                            <f:selectItem itemLabel="Sul-africano" itemValue="Sul-africano"/>
+                            <f:selectItem itemLabel="Sul-coreano" itemValue="Sul-coreano"/>
+                            <f:selectItem itemLabel="Surinamês" itemValue="Surinamês"/>
+                            <f:selectItem itemLabel="Tailandês" itemValue="Tailandês"/>
+                            <f:selectItem itemLabel="Timorense" itemValue="Timorense"/>
+                            <f:selectItem itemLabel="Trindadense" itemValue="Trindadense"/>
+                            <f:selectItem itemLabel="Turco" itemValue="Turco"/>
+                            <f:selectItem itemLabel="Ucraniano" itemValue="Ucraniano"/>
+                            <f:selectItem itemLabel="Ugandense" itemValue="Ugandense"/>
+                            <f:selectItem itemLabel="Uruguaio" itemValue="Uruguaio"/>
+                            <f:selectItem itemLabel="Venezuelano" itemValue="Venezuelano"/>
+                            <f:selectItem itemLabel="Vietnamita" itemValue="Vietnamita"/>
+                            <f:selectItem itemLabel="Zimbabuense" itemValue="Zimbabuense"/>
+                        </p:selectOneMenu>
                     </div>
                 </div>
                 <div class="form-row">
@@ -51,14 +175,53 @@
                                      mask="(+999) 9999-99999" class="form-control"/>
                     </div>
                 </div>
+
+                <p:panel id="morada" header="Morada" toggleable="true" collapsed="true"
+                         closable="false" toggleSpeed="500" closeSpeed="500"
+                         widgetVar="panel" style="margin-bottom:20px">
+
+                    <p:ajax event="close" listener="#{panelView.onClose}" update="msgs"/>
+                    <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs"/>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <p:outputLabel for="mor">Morada: </p:outputLabel>
+                            <p:inputText class="form-control" id="mor"
+                                         styleClass="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <p:outputLabel>Código Postal: </p:outputLabel>
+                            <p:inputMask id="codigopostal" value="#{maskView.codigop}"
+                                         mask="9999-999" class="form-control"/>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <p:outputLabel for="pais">País: </p:outputLabel>
+                            <p:inputText class="form-control" id="pais"
+                                         styleClass="form-control"/>
+                        </div>
+                    </div>
+                    <f:facet name="options">
+                        <p:menu>
+                            <p:submenu label="Settings">
+                                <p:menuitem value="Toggle" url="#" icon="pi pi-clone"
+                                            onclick="PF('panel').toggle()"/>
+                                <p:menuitem value="Remove" url="#" icon="pi pi-times"
+                                            onclick="PF('panel').close()"/>
+                            </p:submenu>
+                        </p:menu>
+                    </f:facet>
+
+                </p:panel>
+
                 <div class="form-row">
                     <div class="form-group col-md-2">
-                        <p:commandButton value="Salvar" title="Gravar registro" styleClass="btn btn-primary"
-                                         style="width:90%;"/>
+                        <p:button value="Salvar" title="Gravar registro"
+                                  styleClass="btn btn-primary" style="width:90%;"/>
                     </div>
                     <div class="form-group col-md-2">
-                        <p:commandButton value="Limpar" type="reset" title="Limpa registro" styleClass="btn btn-primary"
-                                         style="width:90%;"/>
+                        <p:button value="Limpar" title="Limpa registro"
+                                  styleClass="btn btn-primary" style="width:90%;"/>
                     </div>
                 </div>
             </h:form>

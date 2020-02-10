@@ -14,7 +14,35 @@ public class Patient {
     private String docNumber;
     private String email;
     private String phoneNumber;
+    private String nationality;
+    private String address;
+    private Integer postal_code;
+    private String country;
     private Timestamp createdAt;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Integer getPostal_code() {
+        return postal_code;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setPostal_code(Integer postal_code) {
+        this.postal_code = postal_code;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public long getId() {
         return id;
@@ -46,6 +74,14 @@ public class Patient {
 
     public void setBornDate(Date bornDate) {
         this.bornDate = bornDate;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
     public String getDocType() {
@@ -112,6 +148,10 @@ public class Patient {
                 ", docNumber='" + docNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", address='" + address + '\'' +
+                ", postal_code=" + postal_code +
+                ", country='" + country + '\'' +
                 ", createdAt=" + createdAt +
                 '}';
     }

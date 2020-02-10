@@ -10,7 +10,7 @@ public class ConnectionConsultorio {
             System.out.println("Conectando ao banco");
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/CLINIC_DB", "root", "M@ira160491");
+                    "jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "root");
         } catch (ClassNotFoundException e) {
             System.out.println("Não conectado");
             throw new SQLException(e.getMessage());

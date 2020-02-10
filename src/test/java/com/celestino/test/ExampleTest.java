@@ -15,7 +15,7 @@ public class ExampleTest {
     @Test
     public void testaSubtrai() {
 
-        Assert.assertEquals(0, 2 * 2);
+        Assert.assertEquals(4, 2 * 2);
 
     }
 
