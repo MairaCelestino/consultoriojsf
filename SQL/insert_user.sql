@@ -1,6 +1,6 @@
-CREATE TABLE IF NOT EXISTS patient (
+CREATE TABLE IF NOT EXISTS user (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    patient_name VARCHAR(255) NOT NULL,
+    user_name VARCHAR(255) NOT NULL,
 	gender CHAR NOT NULL,
     born_date DATE NOT NULL,
     marital_status CHAR NOT NULL,

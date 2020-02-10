@@ -1,9 +1,11 @@
-CREATE TABLE IF NOT EXISTS patient (
+CREATE TABLE IF NOT EXISTS doctor (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    patient_name VARCHAR(255) NOT NULL,
+    doctor_name VARCHAR(255) NOT NULL,
 	gender CHAR NOT NULL,
     born_date DATE NOT NULL,
     marital_status CHAR NOT NULL,
+    crm_number INT NOT NULL,
+    specialty VARCHAR (30) NOT NULL,
     doc_type CHAR NOT NULL,
     doc_number VARCHAR(50) NOT NULL,
     nationality VARCHAR (50) NOT NULL,

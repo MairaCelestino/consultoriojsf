@@ -1,6 +1,6 @@
-INSERT INTO `CLINIC_DB`.`patient`
+INSERT INTO `CLINIC_DB`.`user`
 (
-`patient_name`,
+`user_name`,
 `gender`,
 `born_date`,
 `marital_status`,
@@ -15,23 +15,23 @@ INSERT INTO `CLINIC_DB`.`patient`
 `created_at`)
 VALUES
 (
-'Maira Celestino: ',
+'Fernanda Souza:',
 'F',
 current_date,
-'S'
+'C',
 'P',
-'tp124596 ',
-'Portugal',
+'ta124000',
+'Brasileiro'
 'mairacelestino@hotmail.com',
 '1234565787',
-'Rua teste 659',
-'2587965',
-'Belgica',
+'Rua teste souza, 123',
+'2785009',
+'Portugal',
 CURRENT_TIMESTAMP);
 
-INSERT INTO `CLINIC_DB`.`patient`
+INSERT INTO `CLINIC_DB`.`doctor`
 (
-`patient_name`,
+`doctor_name`,
 `gender`,
 `born_date`,
 `marital_status`,
@@ -44,20 +44,18 @@ INSERT INTO `CLINIC_DB`.`patient`
 `postal_code`,
 `country`,
 `created_at`)
-
 VALUES
 (
-'Marcelo Celestino: ',
-'M',
+'Fernando Souza Junior',
+'F',
 current_date,
-'C'
+'V',
 'P',
-'tp124500 ',
-'Bruxellas',
-'mairafcelestino@hotmail.com',
-'1234565007',
-'Rua teste 100',
-'2587961',
-'Portugal',
+'ta124000',
+'Brasileiro',
+'mairacelestino@hotmail.com',
+'1234565787',
+'Rua teste 123',
+'2785007',
+'Brasil',
 CURRENT_TIMESTAMP);
-

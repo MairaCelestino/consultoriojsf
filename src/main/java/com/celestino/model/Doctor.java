@@ -4,18 +4,13 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
-public class Patient {
-
+public class Doctor {
     private long id;
     private String patientName;
     private String gender;
     private Date bornDate;
     private String marital_status;
-    private String docType;
-    private String docNumber;
-    private String email;
-    private String phoneNumber;
-    private String nationality;
+    private Integer crmNumber;
 
     public String getMarital_status() {
         return marital_status;
@@ -25,34 +20,16 @@ public class Patient {
         this.marital_status = marital_status;
     }
 
+    private String specialty;
+    private String docType;
+    private String docNumber;
+    private String email;
+    private String phoneNumber;
+    private String nationality;
     private String address;
     private Integer postal_code;
     private String country;
     private Timestamp createdAt;
-
-    public String getAddress() {
-        return address;
-    }
-
-    public Integer getPostal_code() {
-        return postal_code;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setPostal_code(Integer postal_code) {
-        this.postal_code = postal_code;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public long getId() {
         return id;
@@ -60,14 +37,6 @@ public class Patient {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
     }
 
     public String getGender() {
@@ -78,6 +47,14 @@ public class Patient {
         this.gender = gender;
     }
 
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
     public Date getBornDate() {
         return bornDate;
     }
@@ -86,12 +63,20 @@ public class Patient {
         this.bornDate = bornDate;
     }
 
-    public String getNationality() {
-        return nationality;
+    public Integer getCrmNumber() {
+        return crmNumber;
     }
 
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
+    public void setCrmNumber(Integer crmNumber) {
+        this.crmNumber = crmNumber;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 
     public String getDocType() {
@@ -126,6 +111,38 @@ public class Patient {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getPostal_code() {
+        return postal_code;
+    }
+
+    public void setPostal_code(Integer postal_code) {
+        this.postal_code = postal_code;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -138,8 +155,8 @@ public class Patient {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Patient patient = (Patient) o;
-        return id == patient.id;
+        Doctor doctor = (Doctor) o;
+        return id == doctor.id;
     }
 
     @Override
@@ -149,12 +166,14 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" +
+        return "Doctor{" +
                 "id=" + id +
                 ", patientName='" + patientName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", bornDate=" + bornDate +
                 ", marital_status='" + marital_status + '\'' +
+                ", crmNumber=" + crmNumber +
+                ", specialty='" + specialty + '\'' +
                 ", docType='" + docType + '\'' +
                 ", docNumber='" + docNumber + '\'' +
                 ", email='" + email + '\'' +
