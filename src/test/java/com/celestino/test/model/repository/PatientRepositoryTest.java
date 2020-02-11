@@ -15,6 +15,7 @@ public class PatientRepositoryTest {
 
         List<Patient> patients = PatientRepository.findAll();
         System.out.println(patients.toString());
-        Assert.assertEquals(0, patients.size());
+        Assert.assertEquals(2, patients.size());
     }
+
 }
