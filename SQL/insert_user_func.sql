@@ -1,16 +1,61 @@
-CREATE TABLE IF NOT EXISTS user_func (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_name VARCHAR(255) NOT NULL,
-	gender CHAR NOT NULL,
-    born_date DATE NOT NULL,
-    marital_status CHAR NOT NULL,
-    doc_type CHAR NOT NULL,
-    doc_number VARCHAR(50) NOT NULL,
-    nationality VARCHAR (50) NOT NULL,
-    email VARCHAR(200),
-    phone_number VARCHAR(20),
-    address VARCHAR(50) NOT NULL,
-    postal_code INT NOT NULL,
-    country VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)  ENGINE=INNODB;
+INSERT INTO `CLINIC_DB`.`user_func`
+(
+`user_name`,
+`gender`,
+`born_date`,
+`marital_status`,
+`doc_type`,
+`doc_number`,
+`nationality`,
+`email`,
+`phone_number`,
+`address`,
+`postal_code`,
+`country`,
+`created_at`)
+VALUES
+(
+'Fernanda Souza:',
+'F',
+current_date,
+'C',
+'P',
+'ta124000',
+'Brasileiro',
+'mairacelestino@hotmail.com',
+'1234565787',
+'Rua teste souza, 123',
+'2785009',
+'Portugal',
+CURRENT_TIMESTAMP);
+
+INSERT INTO `CLINIC_DB`.`user_func`
+(
+`user_name`,
+`gender`,
+`born_date`,
+`marital_status`,
+`doc_type`,
+`doc_number`,
+`nationality`,
+`email`,
+`phone_number`,
+`address`,
+`postal_code`,
+`country`,
+`created_at`)
+VALUES
+(
+'Fernando Souza Junior',
+'F',
+current_date,
+'V',
+'P',
+'ta124000',
+'Brasileiro',
+'mairacelestino@hotmail.com',
+'1234565787',
+'Rua teste 123',
+'2785007',
+'Brasil',
+CURRENT_TIMESTAMP);
