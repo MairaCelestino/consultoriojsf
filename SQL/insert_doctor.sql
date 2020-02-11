@@ -1,6 +1,6 @@
 INSERT INTO `CLINIC_DB`.`doctor`
 (
-`doct_name`,
+`doctor_name`,
 `gender`,
 `born_date`,
 `marital_status`,
@@ -17,7 +17,7 @@ INSERT INTO `CLINIC_DB`.`doctor`
 `created_at`)
 VALUES
 (
-'Fernanda Souza:',
+'Fernanda Souza',
 'F',
 current_date,
 'V',
@@ -25,10 +25,10 @@ current_date,
 'Cardiologista',
 'P',
 'ta124000',
-'Brasileiro'
+'Brasileiro',
 'mairacelestino@hotmail.com',
 '1234565787',
-'Rua teste souza, 123',
+'Rua teste souza 123',
 '2785009',
 'Portugal',
 CURRENT_TIMESTAMP);
@@ -38,6 +38,7 @@ INSERT INTO `CLINIC_DB`.`doctor`
 `doctor_name`,
 `gender`,
 `born_date`,
+`marital_status`,
 `crm_number`,
 `specialty`,
 `doc_type`,
@@ -54,7 +55,7 @@ VALUES
 'Fernando Souza Junior',
 'F',
 current_date,
-'D'
+'D',
 '1236008',
 'Neurologista',
 'P',

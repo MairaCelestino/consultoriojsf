@@ -1,4 +1,4 @@
-INSERT INTO `CLINIC_DB`.`user`
+INSERT INTO `CLINIC_DB`.`user_func`
 (
 `user_name`,
 `gender`,
@@ -21,7 +21,7 @@ current_date,
 'C',
 'P',
 'ta124000',
-'Brasileiro'
+'Brasileiro',
 'mairacelestino@hotmail.com',
 '1234565787',
 'Rua teste souza, 123',
@@ -29,7 +29,7 @@ current_date,
 'Portugal',
 CURRENT_TIMESTAMP);
 
-INSERT INTO `CLINIC_DB`.`doctor`
+INSERT INTO `CLINIC_DB`.`user_func`
 (
 `doctor_name`,
 `gender`,
