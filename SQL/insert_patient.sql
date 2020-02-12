@@ -18,7 +18,7 @@ VALUES
 'Maira Celestino: ',
 'F',
 current_date,
-'S'
+'S',
 'P',
 'tp124596 ',
 'Portugal',
@@ -50,7 +50,7 @@ VALUES
 'Marcelo Celestino: ',
 'M',
 current_date,
-'C'
+'C',
 'P',
 'tp124500 ',
 'Bruxellas',
