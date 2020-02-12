@@ -31,5 +31,24 @@ public class PatientRepository {
 
         return patients;
     }
-}
+
+    public void savePatient() throws SQLException {
+        Patient p = new Patient();
+
+        if (p == null)
+            throw new SQLException("O valor passado não pode ser nulo!!!");
+
+        try {
+
+            String sql = "Insert into patient(patient_name,gender,born_date,marital_status,doc_type" +
+                    "doc_number,nationality,email.phone_number,address,postal_code,country)"
+                    + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+
+
+            Statement stmt = ConnectionConsultorio.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+
+        }
+    }
 
