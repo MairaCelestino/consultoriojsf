@@ -1,11 +1,10 @@
 package com.celestino.model.repository;
 
 import com.celestino.model.Patient;
-import com.celestino.model.util.ConnectionConsultorio;
+import com.celestino.model.util.ConnectionClinic;
+import com.celestino.model.util.ClinicException;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PatientRepository {
 
         List<Patient> patients = new ArrayList<Patient>();
 
-        Statement stmt = ConnectionConsultorio.getConnection().createStatement();
+        Statement stmt = ConnectionClinic.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
             Patient p = new Patient();
@@ -37,28 +36,46 @@ public class PatientRepository {
 
             patients.add(p);
         }
-        ConnectionConsultorio.getConnection().close();
+        ConnectionClinic.getConnection().close();
 
         return patients;
     }
 
-    public void savePatient() throws SQLException {
-        Patient p = new Patient();
+    public void savePatient(Patient patient) throws ClinicException, SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
 
-        if (p == null)
-            throw new SQLException("O valor passado não pode ser nulo!!!");
-
+        if (patient == null)
+            throw new ClinicException("Value cannot be null!!");
         try {
+
+            conn = ConnectionClinic.getConnection();
 
             String sql = "Insert into patient(patient_name,gender,born_date,marital_status,doc_type" +
                     "doc_number,nationality,email.phone_number,address,postal_code,country)"
                     + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, patient.getPatientName());
+            ps.setString(2, patient.getGender());
+            ps.setDate(3, (Date) patient.getBornDate());
+            ps.setString(4, patient.getMarital_status());
+            ps.setString(5, patient.getDocType());
+            ps.setString(6, patient.getDocNumber());
+            ps.setString(7, patient.getNationality());
+            ps.setString(8, patient.getEmail());
+            ps.setString(9, patient.getPhoneNumber());
+            ps.setString(10, patient.getAddress());
+            ps.setInt(11, patient.getPostal_code());
+            ps.setString(12, patient.getCountry());
 
+            ps.executeUpdate();
 
-            Statement stmt = ConnectionConsultorio.getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-
+        } catch (SQLException sql) {
+            throw new ClinicException("Error entering information" + sql);
+        } finally {
+            ConnectionClinic.getConnection().close();
         }
+
     }
+}
 

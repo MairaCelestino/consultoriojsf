@@ -2,35 +2,35 @@ package com.celestino.model.util;
 
 import java.sql.*;
 
-public class ConnectionConsultorio {
+public class ConnectionClinic {
 
     public static Connection getConnection() throws SQLException {
 
         try {
-            System.out.println("Conectando ao banco");
+            System.out.println("Connecting to the database");
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
                     //"jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "M@ira160491");
                     "jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "root");
         } catch (ClassNotFoundException e) {
-            System.out.println("Não conectado");
+            System.out.println("Not connected!!");
             throw new SQLException(e.getMessage());
         }
     }
 
-    public static void closeConnection(Connection conn, Statement stmt, ResultSet rs) throws ConsultorioException {
+    public static void closeConnection(Connection conn, Statement stmt, ResultSet rs) throws ClinicException {
         close(conn, stmt, rs);
     }
 
-    public static void closeConnection(Connection conn, Statement stmt) throws ConsultorioException {
+    public static void closeConnection(Connection conn, Statement stmt) throws ClinicException {
         close(conn, stmt, null);
     }
 
-    public void closeConnection(Connection conn) throws ConsultorioException {
+    public void closeConnection(Connection conn) throws ClinicException {
         close(conn, null, null);
     }
 
-    public static void close(Connection conn, Statement stmt, ResultSet rs) throws ConsultorioException {
+    public static void close(Connection conn, Statement stmt, ResultSet rs) throws ClinicException {
         try {
             if (rs != null)
                 rs.close();
@@ -39,7 +39,7 @@ public class ConnectionConsultorio {
             if (conn != null)
                 conn.close();
         } catch (Exception e) {
-            throw new ConsultorioException(e.getMessage());
+            throw new ClinicException(e.getMessage());
         }
     }
 }
