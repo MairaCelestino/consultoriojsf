@@ -6,20 +6,11 @@ import java.util.Objects;
 
 public class Doctor {
     private long id;
-    private String patientName;
+    private String doctorName;
     private String gender;
     private Date bornDate;
     private String marital_status;
     private Integer crmNumber;
-
-    public String getMarital_status() {
-        return marital_status;
-    }
-
-    public void setMarital_status(String marital_status) {
-        this.marital_status = marital_status;
-    }
-
     private String specialty;
     private String docType;
     private String docNumber;
@@ -30,6 +21,14 @@ public class Doctor {
     private Integer postal_code;
     private String country;
     private Timestamp createdAt;
+
+    public String getMarital_status() {
+        return marital_status;
+    }
+
+    public void setMarital_status(String marital_status) {
+        this.marital_status = marital_status;
+    }
 
     public long getId() {
         return id;
@@ -47,12 +46,12 @@ public class Doctor {
         this.gender = gender;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
+    public void setDoctorName(String patientName) {
+        this.docNumber = doctorName;
     }
 
     public Date getBornDate() {
@@ -168,7 +167,7 @@ public class Doctor {
     public String toString() {
         return "Doctor{" +
                 "id=" + id +
-                ", patientName='" + patientName + '\'' +
+                ", patientName='" + doctorName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", bornDate=" + bornDate +
                 ", marital_status='" + marital_status + '\'' +
