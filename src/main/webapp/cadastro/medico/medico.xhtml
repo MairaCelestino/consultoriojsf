@@ -204,12 +204,7 @@
                 </div>
 
                 <p:panel id="morada" header="Morada" toggleable="true" collapsed="true"
-                         closable="false" toggleSpeed="500" closeSpeed="500"
-                         widgetVar="panel" style="margin-bottom:20px">
-
-                    <p:ajax event="close" listener="#{panelView.onClose}" update="msgs"/>
-                    <p:ajax event="toggle" listener="#{panelView.onToggle}"
-                            update="msgs"/>
+                       style="margin-bottom:20px">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <p:outputLabel for="mor">Morada: </p:outputLabel>
@@ -229,16 +224,6 @@
                                          styleClass="form-control"/>
                         </div>
                     </div>
-                    <f:facet name="options">
-                        <p:menu>
-                            <p:submenu label="Settings">
-                                <p:menuitem value="Toggle" url="#" icon="pi pi-clone"
-                                            onclick="PF('panel').toggle()"/>
-                                <p:menuitem value="Remove" url="#" icon="pi pi-times"
-                                            onclick="PF('panel').close()"/>
-                            </p:submenu>
-                        </p:menu>
-                    </f:facet>
                 </p:panel>
                 <div class="form-row">
                     <div class="form-group col-md-2">
