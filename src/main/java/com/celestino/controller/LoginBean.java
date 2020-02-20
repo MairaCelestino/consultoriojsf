@@ -16,8 +16,8 @@ public class LoginBean implements Serializable {
     private String user;
 
     public String autenticar() {
-        if (this.getUser().trim().equalsIgnoreCase("ADMIN")) {
-            if (this.getPassword().equalsIgnoreCase("ADMIN")) {
+        if (this.getUser().trim().equalsIgnoreCase("admin")) {
+            if (this.getPassword().equalsIgnoreCase("admin")) {
                 return "home?faces-redirect=true";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
