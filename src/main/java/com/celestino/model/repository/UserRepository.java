@@ -40,7 +40,7 @@ public class UserRepository {
 		return users;
 	}
 
-	public static void saveUser(User user) throws ClinicException {
+	public static void save(User user) throws ClinicException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -73,6 +73,39 @@ public class UserRepository {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void deleteById(Long id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			String sql = "DELETE FROM clinic_db.user WHERE id=?";
+			conn = ConnectionClinic.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setLong(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void update(User user) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			String sql = "UPDATE USER SET name=?, login=?, password=? WHERE id=?";
+			conn = ConnectionClinic.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getLogin());
+			ps.setString(3, user.getPassword());
+			ps.setLong(4, user.getId());
+
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public static User findByName(String name) {
