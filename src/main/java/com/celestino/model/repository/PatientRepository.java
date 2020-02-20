@@ -22,6 +22,7 @@ public class PatientRepository {
 
         Statement stmt = ConnectionClinic.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery(sql);
+        
         while (rs.next()) {
             Patient p = new Patient();
             p.setId(rs.getInt(1));

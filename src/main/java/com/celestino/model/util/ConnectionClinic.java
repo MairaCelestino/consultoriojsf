@@ -7,8 +7,7 @@ public class ConnectionClinic {
     public static Connection getConnection() throws SQLException {
 
         try {
-            System.out.println("Connecting to the database");
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(
                     //"jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "M@ira160491");
                     "jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "root");
