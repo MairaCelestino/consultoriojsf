@@ -6,163 +6,68 @@ import java.util.Objects;
 
 public class User {
 
-    private long id;
-    private String userName;
-    private String gender;
-    private Date bornDate;
-    private String marital_status;
-    private String docType;
-    private String docNumber;
-    private String email;
-    private String phoneNumber;
-    private String nationality;
-    private String address;
-    private Integer postal_code;
-    private String country;
-    private Timestamp createdAt;
+	private long id;
+	private String name;
+	private String login;
+	private String password;
 
-    public long getId() {
-        return id;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getGender() {
-        return gender;
-    }
+	public String getLogin() {
+		return login;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public Date getBornDate() {
-        return bornDate;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setBornDate(Date bornDate) {
-        this.bornDate = bornDate;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getMarital_status() {
-        return marital_status;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
 
-    public void setMarital_status(String marital_status) {
-        this.marital_status = marital_status;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 
-    public String getDocType() {
-        return docType;
-    }
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", login=" + login + ", password=" + password + "]";
+	}
 
-    public void setDocType(String docType) {
-        this.docType = docType;
-    }
-
-    public String getDocNumber() {
-        return docNumber;
-    }
-
-    public void setDocNumber(String docNumber) {
-        this.docNumber = docNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getPostal_code() {
-        return postal_code;
-    }
-
-    public void setPostal_code(Integer postal_code) {
-        this.postal_code = postal_code;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", bornDate=" + bornDate +
-                ", marital_status='" + marital_status + '\'' +
-                ", docType='" + docType + '\'' +
-                ", docNumber='" + docNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", nationality='" + nationality + '\'' +
-                ", address='" + address + '\'' +
-                ", postal_code=" + postal_code +
-                ", country='" + country + '\'' +
-                ", createdAt=" + createdAt +
-                '}';
-    }
 }
