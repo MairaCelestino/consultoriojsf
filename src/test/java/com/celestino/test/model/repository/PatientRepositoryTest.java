@@ -10,12 +10,12 @@ import java.util.List;
 
 public class PatientRepositoryTest {
 
-    @Test
-    public void mustTestingFindAll() throws SQLException {
+	@Test
+	public void mustTestingFindAll() throws SQLException {
 
-        List<Patient> patients = PatientRepository.findAll();
-        System.out.println(patients.toString());
-        Assert.assertEquals(2, patients.size());
-    }
+		List<Patient> patients = PatientRepository.findAll();
+		System.out.println(patients.toString());
+		Assert.assertEquals(2, patients.size());
+	}
 
 }

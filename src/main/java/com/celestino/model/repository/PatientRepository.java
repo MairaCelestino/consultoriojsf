@@ -1,13 +1,17 @@
 package com.celestino.model.repository;
 
-import com.celestino.model.Patient;
-import com.celestino.model.util.ConnectionClinic;
-import com.celestino.model.util.ClinicException;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.celestino.model.Patient;
+import com.celestino.model.util.ClinicException;
+import com.celestino.model.util.ConnectionClinic;
 
 public class PatientRepository {
 
@@ -120,7 +124,7 @@ public class PatientRepository {
         PreparedStatement ps = null;
 
         if (patient == null)
-            throw new ClinicException("O valor não pode ser nulo");
+            throw new ClinicException("Value cannot be null!!");
         try {
             conn = ConnectionClinic.getConnection();
             ps = conn.prepareStatement("Delete from patient where id=?");
