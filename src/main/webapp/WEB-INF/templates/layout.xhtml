@@ -20,7 +20,7 @@
                   onsuccess="PF('status').hide()"/>
     <p:dialog widgetVar="status" closable="false" resizable="false" header="Por favor, Aguarde..." modal="true"
               style="font-size: small" responsive="true">
-        <p:progressBar id="progressBarIndeterminate" style="height:6px" mode="indeterminate"/>
+        <p:progressBar id="progressBarIndeterminate" style="height:5px" mode="indeterminate"/>
     </p:dialog>
     <div class="container-fluid">
 
@@ -44,6 +44,8 @@
                         <p:menuitem value="Médico" outcome="/cadastro/medico/medico"/>
                         <p:separator/>
                         <p:menuitem value="Funcionário" outcome="/cadastro/funcionario/funcionario"/>
+                        <p:separator/>
+                        <p:menuitem value="User" outcome="/cadastro/user/user"/>
                     </p:submenu>
                     <f:facet name="options">
                         <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Pesquisar"/>
