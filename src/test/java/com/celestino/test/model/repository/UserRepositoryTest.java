@@ -12,10 +12,13 @@ import com.celestino.model.repository.UserRepository;
 import com.celestino.model.util.ClinicException;
 
 public class UserRepositoryTest {
+	
+	private UserRepository UserRepository;
 
 	@Before
 	public void prepareDatabase() {
 		System.out.println("Cleanning database...");
+		UserRepository = new UserRepository();
 		UserRepository.deleteAll();
 	}
 

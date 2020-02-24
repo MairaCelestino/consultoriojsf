@@ -1,11 +1,10 @@
 package com.celestino.model;
 
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Objects;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private long id;
 	private String name;
 	private String login;

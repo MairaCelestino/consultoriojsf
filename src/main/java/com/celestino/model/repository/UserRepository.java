@@ -1,5 +1,6 @@
 package com.celestino.model.repository;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,9 +13,11 @@ import com.celestino.model.User;
 import com.celestino.model.util.ClinicException;
 import com.celestino.model.util.ConnectionClinic;
 
-public class UserRepository {
+public class UserRepository implements Serializable{
 
-	public static List<User> findAll() {
+	private static final long serialVersionUID = 1L;
+
+	public List<User> findAll() {
 
 		List<User> users = new ArrayList<User>();
 
@@ -40,7 +43,7 @@ public class UserRepository {
 		return users;
 	}
 
-	public static void save(User user) throws ClinicException {
+	public void save(User user) throws ClinicException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -62,7 +65,7 @@ public class UserRepository {
 
 	}
 
-	public static void deleteAll() {
+	public void deleteAll() {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
@@ -75,7 +78,7 @@ public class UserRepository {
 		}
 	}
 	
-	public static void deleteById(Long id) {
+	public void deleteById(Long id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
@@ -89,7 +92,7 @@ public class UserRepository {
 		}
 	}
 
-	public static void update(User user) {
+	public void update(User user) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
@@ -108,7 +111,7 @@ public class UserRepository {
 
 	}
 
-	public static User findByName(String name) {
+	public User findByName(String name) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		User user = null;

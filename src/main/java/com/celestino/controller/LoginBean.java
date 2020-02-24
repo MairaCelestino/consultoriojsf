@@ -6,7 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@Named("loginBean")
+@Named
 @SessionScoped
 public class LoginBean implements Serializable {
 

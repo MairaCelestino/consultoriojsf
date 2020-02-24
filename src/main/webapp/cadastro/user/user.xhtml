@@ -14,35 +14,48 @@
 			rel="stylesheet" />
 		<h:outputStylesheet library="vendor"
 			name="/jquery/jquery-3.2.1.min.js" />
+		<f:metadata>
+			<f:viewAction action="#{userBean.iniciar}" />
+		</f:metadata>
 		<p:panel header="Cadastrar User">
-			<h:form>
+			<h:form id="form-user">
 				<p:growl id="msgs" showDetail="true"
 					skipDetailIfEqualsSummary="true" />
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<p:outputLabel for="name">Nome: </p:outputLabel>
-						<p:inputText id="name" placeholder="Digite seu nome" styleClass="form-control" />
+						<p:inputText id="name" required="true"
+							requiredMessage="Nome não pode ser vazio."
+							value="#{userBean.user.name}" placeholder="Digite seu nome"
+							styleClass="form-control" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-5">
-						<p:outputLabel for="user">Usuário: </p:outputLabel>
-						<p:inputText id="user" styleClass="form-control" />
+						<p:outputLabel for="login">Login: </p:outputLabel>
+						<p:inputText id="login" required="true"
+							requiredMessage="Login não pode ser vazio."
+							value="#{userBean.user.login}" styleClass="form-control" />
 					</div>
 					<div class="form-group col-md-3">
 						<p:outputLabel for="password">Password: </p:outputLabel>
-						<p:password id="password" style="height: 55%; width: 100%;"
-							label="password" />
+						<p:password id="password" required="true"
+							requiredMessage="Password não pode ser vazio."
+							value="#{userBean.user.password}"
+							style="height: 55%; width: 100%;" label="password" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-2">
-						<p:button value="Salvar" title="Gravar registro"
+						<p:commandButton value="Salvar" title="Gravar registro"
+							update="form-user" action="#{userBean.inserir()}"
 							styleClass="btn btn-primary" style="width:90%;" />
 					</div>
 					<div class="form-group col-md-2">
-						<p:button value="Limpar" title="Limpa registro"
-							styleClass="btn btn-primary" style="width:90%;" />
+						<p:commandButton value="Limpar" title="Limpa registro"
+							action="#{userBean.limpar()}" resetValues="true" immediate="true"
+							update="form-user" styleClass="btn btn-primary"
+							style="width:90%;" />
 					</div>
 				</div>
 			</h:form>
