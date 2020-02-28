@@ -1,9 +1,21 @@
 package com.celestino.model;
 
-public class Nationality {
+import java.io.Serializable;
 
+public class Nationality implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String description;
+	private String country;
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
 	public int getId() {
 		return id;
@@ -45,7 +57,7 @@ public class Nationality {
 
 	@Override
 	public String toString() {
-		return "Nacionality [id=" + id + ", description=" + description + "]";
+		return "Nationality [id=" + id + ", description=" + description + ", country=" + country + "]";
 	}
 
 }
