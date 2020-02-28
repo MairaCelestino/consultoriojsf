@@ -84,7 +84,7 @@ public class PatientRepository implements Serializable {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, patient.getPatientName());
 			ps.setString(2, patient.getGender());
-			ps.setDate(3, (Date) patient.getBornDate());
+			ps.setDate(3, new Date(patient.getBornDate().getTime()));
 			ps.setString(4, patient.getMarital_status());
 			ps.setString(5, patient.getDocType());
 			ps.setString(6, patient.getDocNumber());
@@ -92,7 +92,7 @@ public class PatientRepository implements Serializable {
 			ps.setString(8, patient.getEmail());
 			ps.setString(9, patient.getPhoneNumber());
 			ps.setString(10, patient.getAddress());
-			ps.setInt(11, patient.getPostal_code());
+			ps.setInt(11, patient.getPostal_code().intValue());
 			ps.setString(12, patient.getCountry());
 
 			ps.executeUpdate();
