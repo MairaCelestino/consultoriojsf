@@ -153,7 +153,7 @@ public class PatientRepository implements Serializable {
 		PreparedStatement ps = null;
 		Patient patient = null;
 
-		String sql = "SELECT * FROM clinic_db.patient WHERE clinic_db.user.patient_name = ?";
+		String sql = "SELECT * FROM clinic_db.patient WHERE clinic_db.patient.patient_name = ?";
 		try {
 			conn = ConnectionClinic.getConnection();
 			ps = conn.prepareStatement(sql);
