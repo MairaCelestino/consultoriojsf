@@ -1,6 +1,7 @@
 package com.celestino.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -18,6 +19,8 @@ public class UserBean implements Serializable {
 
 	private User user;
 
+	private List<User> users;
+
 	@Inject
 	private UserRepository userRepository;
 
@@ -28,10 +31,12 @@ public class UserBean implements Serializable {
 	public String inserir() {
 		try {
 			userRepository.save(user);
+
 		} catch (ClinicException e) {
 			e.printStackTrace();
 		}
 		limpar();
+		users = null;
 		return "";
 	}
 
@@ -47,4 +52,10 @@ public class UserBean implements Serializable {
 		this.user = user;
 	}
 
+	public List<User> getUsers() {
+		if (users == null) {
+			users = userRepository.findAll();
+		}
+		return users;
+	}
 }

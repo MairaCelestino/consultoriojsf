@@ -23,7 +23,7 @@ public class UserRepository implements Serializable{
 
 		Statement stmt;
 		try {
-			String sql = "SELECT * FROM CLINIC_DB.user";
+			String sql = "SELECT * FROM clinic_db.user ORDER BY id DESC";
 			stmt = ConnectionClinic.getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
