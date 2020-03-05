@@ -86,7 +86,7 @@
 					<h:outputText value="#{u.login}" />
 				</p:column>
 				<p:column width="40">
-					<p:commandLink>
+					<p:commandLink action="#{userBean.delete(id)}" update="form-users">
 						<h:graphicImage library="images" name="icon_delete.png" width="15"
 							alt="Responsive image" title="Excluir" />
 					</p:commandLink>
@@ -94,7 +94,7 @@
 				<p:column width="40">
 					<p:commandLink>
 						<h:graphicImage library="images" name="edit.png" width="15"
-							alt="Responsive image" title="Editar" />
+							alt="Responsive image" title="Editar"   />
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>
