@@ -44,12 +44,14 @@
 							value="#{userBean.user.password}"
 							style="height: 55%; width: 100%;" label="password" />
 					</div>
+
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-2">
 						<p:commandButton value="Salvar" title="Gravar registro"
-							update="form-user form-users:tab-users" action="#{userBean.inserir()}"
-							styleClass="btn btn-primary" style="width:90%;" />
+							update="form-user form-users:tab-users"
+							action="#{userBean.inserir()}" styleClass="btn btn-primary"
+							style="width:90%;" />
 					</div>
 					<div class="form-group col-md-2">
 						<p:commandButton value="Limpar" title="Limpa registro"
@@ -62,12 +64,17 @@
 		</p:panel>
 		<p:separator />
 		<h:form id="form-users">
-			<p:dataTable id="tab-users" var="u" value="#{userBean.users}" paginator="true"
-				rows="5" rowsPerPageTemplate="5,10,15" paginatorPosition="bottom">
+			<p:dataTable id="tab-users" var="u" value="#{userBean.users}"
+				paginator="true" rows="5" rowsPerPageTemplate="5,10,15"
+				paginatorPosition="bottom">
 				<f:facet name="header">
             			Users Cadastrados
-        		</f:facet>
-				<p:column headerText="Id" sortBy="#{u.id}" width="80" style="text-align:center;">
+            			<p:commandButton id="toggler" type="button"
+						value="Columns" style="float:center" />
+					<p:columnToggler datasource="tab-users" trigger="toggler" />
+				</f:facet>
+				<p:column headerText="Id" sortBy="#{u.id}" width="80"
+					style="text-align:center;">
 					<h:outputText value="#{u.id}" />
 				</p:column>
 
@@ -77,6 +84,18 @@
 
 				<p:column headerText="Login" sortBy="#{u.login}" width="300">
 					<h:outputText value="#{u.login}" />
+				</p:column>
+				<p:column width="40">
+					<p:commandLink>
+						<h:graphicImage library="images" name="icon_delete.png" width="15"
+							alt="Responsive image" title="Excluir" />
+					</p:commandLink>
+				</p:column>
+				<p:column width="40">
+					<p:commandLink>
+						<h:graphicImage library="images" name="edit.png" width="15"
+							alt="Responsive image" title="Editar" />
+					</p:commandLink>
 				</p:column>
 			</p:dataTable>
 		</h:form>
