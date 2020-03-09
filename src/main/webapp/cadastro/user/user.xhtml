@@ -86,7 +86,7 @@
 					<h:outputText value="#{u.login}" />
 				</p:column>
 				<p:column width="40">
-					<p:commandLink action="#{userBean.users.delete(u.id)}" update="form-users">
+					<p:commandLink action="#{userBean.delete(u)}" update="form-users">
 						<h:graphicImage library="images" name="icon_delete.png" width="15"
 							alt="Responsive image" title="Excluir" />
 					</p:commandLink>
