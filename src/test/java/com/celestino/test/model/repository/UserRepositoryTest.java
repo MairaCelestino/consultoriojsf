@@ -118,7 +118,7 @@ public class UserRepositoryTest {
 			Assert.assertNotNull(maira);
 
 			// Deletando registro
-		//	UserRepository.deleteById(maira.getId());
+			//UserRepository.deleteById(maira.getId());
 
 			// Buscando User removido
 			User userDeletado = UserRepository.findByName("Maira");

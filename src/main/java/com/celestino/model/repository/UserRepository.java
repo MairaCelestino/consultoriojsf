@@ -78,14 +78,15 @@ public class UserRepository implements Serializable{
 		}
 	}
 	
-	public void deleteById(User user) {
+	public void deleteById(long id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
 			String sql = "DELETE FROM clinic_db.user WHERE id=?";
 			conn = ConnectionClinic.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setLong(1, user.getId());
+		//	ps.setLong(1, user.getId());
+			ps.setLong(1, id);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

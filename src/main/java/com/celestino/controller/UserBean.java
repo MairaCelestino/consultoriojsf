@@ -40,15 +40,11 @@ public class UserBean implements Serializable {
 		return "";
 	}
 
-	public String delete(User user) {
+	public void delete(Long user) {
 		userRepository.deleteById(user);
-		return null;
-
+		limpar();
+		users = null;
 	}
-
-//	public void delete(User user) {
-//		userRepository.deleteById(user);
-//	}
 
 	public void limpar() {
 		this.user = new User();
