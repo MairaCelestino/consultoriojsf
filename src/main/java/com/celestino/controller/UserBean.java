@@ -18,15 +18,27 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private User user;
+	private String name;
 
 	private List<User> users;
 
 	@Inject
 	private UserRepository userRepository;
-	
-	public User findUser(String name) {
-		return userRepository.findByName(name);
 
+	public void search() {
+		user = new UserRepository().findByName(name);
+	}
+
+//	public void updateUser(User user) {
+//		userRepository.update(user);
+//		limpar();
+//		users = null;
+//	}
+	
+	public String updateUser(User user) {
+		userRepository.update(user);
+		limpar();
+		return null;
 	}
 
 	public void iniciar() {

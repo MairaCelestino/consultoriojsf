@@ -48,7 +48,7 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-2">
-						<p:commandButton value="Salvar" title="Gravar registro"
+						<p:commandButton id="u" value="Salvar" title="Gravar registro"
 							update="form-user form-users:tab-users"
 							action="#{userBean.inserir()}" styleClass="btn btn-primary"
 							style="width:90%;" />
@@ -63,27 +63,34 @@
 			</h:form>
 		</p:panel>
 		<p:separator />
-		<h:form>
-			<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
-				<p:messages id="messages" />
-				<h:panelGrid columns="4" cellpadding="5">
+		<h:form id="form-searchUser">
+			<p:panel header="Pesquisar User">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<p:outputLabel for="nome">Nome: </p:outputLabel>
+						<p:inputText id="nome" value="#{userBean.user.name}">
+						</p:inputText>
+					</div>
+					<div>
+						<p:outputLabel for="id">Id : </p:outputLabel>
+						<p:inputText id="id" value="#{userBean.user.id}">
+						</p:inputText>
+					</div>
 					<div class="form-row">
-						<div class="form-group col-md-2">
-							<h:outputLabel for="nome" value="Nome: *" />
-							<p:inputText id="nome" value="#{userBean.users}"
-								required="true" label="nome">
-								<f:validateLength minimum="5" />
-							</p:inputText>
-							<p:message for="nome" />
+						<div class="form-group col-md-6">
+							<p:commandButton value="Pesquisar"
+								update="form-searchUser form-user form-users:tab-users"
+								action="#{userBean.search}" styleClass="btn btn-primary"
+								style="width:90%;" />
 						</div>
-						<div class="form-group col-md-2">
-							<p:commandButton process=""
-								update="form-user form-users:tab-users" value="Search"
-								action="#{userBean.findByName(name)}" styleClass="btn btn-primary" />
+						<div class="form-group col-md-6">
+							<p:commandButton value="Limpar" action="#{userBean.limpar()}"
+								resetValues="true" immediate="true"
+								update="form-searchUser form-user form-users:tab-users"
+								styleClass="btn btn-primary" style="width:90%;" />
 						</div>
 					</div>
-				</h:panelGrid>
-
+				</div>
 			</p:panel>
 		</h:form>
 		<p:separator />
@@ -94,16 +101,16 @@
 				<f:facet name="header">
             			Users Cadastrados
 				</f:facet>
-				<p:column headerText="Id" sortBy="#{u.id}" width="80"
-					style="text-align:center;">
+				<p:column filterBy="#{u.id}" headerText="Id" sortBy="#{u.id}"
+					width="80" style="text-align:center;">
 					<h:outputText value="#{u.id}" />
 				</p:column>
-
-				<p:column headerText="Nome" sortBy="#{u.name}">
+				<p:column filterBy="#{u.name}" headerText="Nome" sortBy="#{u.name}">
 					<h:outputText value="#{u.name}" />
 				</p:column>
 
-				<p:column headerText="Login" sortBy="#{u.login}" width="300">
+				<p:column filterBy="#{u.login}" headerText="Login"
+					sortBy="#{u.login}" width="300">
 					<h:outputText value="#{u.login}" />
 				</p:column>
 				<p:column width="40">
@@ -116,7 +123,8 @@
 					</p:commandLink>
 				</p:column>
 				<p:column width="40">
-					<p:commandLink>
+					<p:commandLink action="#{userBean.updateUser(u)}"
+						update="form-user form-users:tab-users">
 						<h:graphicImage library="images" name="edit.png" width="15"
 							alt="Responsive image" title="Editar" />
 					</p:commandLink>
