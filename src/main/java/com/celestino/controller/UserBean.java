@@ -23,6 +23,11 @@ public class UserBean implements Serializable {
 
 	@Inject
 	private UserRepository userRepository;
+	
+	public User findUser(String name) {
+		return userRepository.findByName(name);
+
+	}
 
 	public void iniciar() {
 		this.user = new User();

@@ -63,6 +63,30 @@
 			</h:form>
 		</p:panel>
 		<p:separator />
+		<h:form>
+			<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
+				<p:messages id="messages" />
+				<h:panelGrid columns="4" cellpadding="5">
+					<div class="form-row">
+						<div class="form-group col-md-2">
+							<h:outputLabel for="nome" value="Nome: *" />
+							<p:inputText id="nome" value="#{userBean.users}"
+								required="true" label="nome">
+								<f:validateLength minimum="5" />
+							</p:inputText>
+							<p:message for="nome" />
+						</div>
+						<div class="form-group col-md-2">
+							<p:commandButton process=""
+								update="form-user form-users:tab-users" value="Search"
+								action="#{userBean.findByName(name)}" styleClass="btn btn-primary" />
+						</div>
+					</div>
+				</h:panelGrid>
+
+			</p:panel>
+		</h:form>
+		<p:separator />
 		<h:form id="form-users">
 			<p:dataTable id="tab-users" var="u" value="#{userBean.users}"
 				paginator="true" rows="5" rowsPerPageTemplate="5,10,15"
