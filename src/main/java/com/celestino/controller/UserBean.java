@@ -3,9 +3,13 @@ package com.celestino.controller;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.RowEditEvent;
 
 import com.celestino.model.User;
 import com.celestino.model.repository.UserRepository;
@@ -29,12 +33,6 @@ public class UserBean implements Serializable {
 		user = new UserRepository().findByName(name);
 	}
 
-//	public void updateUser(User user) {
-//		userRepository.update(user);
-//		limpar();
-//		users = null;
-//	}
-	
 	public String updateUser(User user) {
 		userRepository.update(user);
 		limpar();
@@ -81,4 +79,15 @@ public class UserBean implements Serializable {
 		}
 		return users;
 	}
+
+	public void onRowEdit(RowEditEvent event) {
+		this.user = (User) event.getObject();
+		updateUser(user);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "User " + user.getName() + " Upadeted!", ""));
+	}
+
+	public void onRowCancel(RowEditEvent event) {
+	}
+
 }
