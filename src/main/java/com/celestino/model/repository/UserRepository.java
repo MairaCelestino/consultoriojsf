@@ -13,7 +13,7 @@ import com.celestino.model.User;
 import com.celestino.model.util.ClinicException;
 import com.celestino.model.util.ConnectionClinic;
 
-public class UserRepository implements Serializable{
+public class UserRepository implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -77,7 +77,7 @@ public class UserRepository implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void deleteById(long id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -85,7 +85,7 @@ public class UserRepository implements Serializable{
 			String sql = "DELETE FROM clinic_db.user WHERE id=?";
 			conn = ConnectionClinic.getConnection();
 			ps = conn.prepareStatement(sql);
-		//	ps.setLong(1, user.getId());
+			// ps.setLong(1, user.getId());
 			ps.setLong(1, id);
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -112,29 +112,32 @@ public class UserRepository implements Serializable{
 
 	}
 
-	public User findByName(String name) {
-		Connection conn = null;
-		PreparedStatement ps = null;
-		User user = null;
+	public List<User> findByName(String name) {
 
-		String sql = "SELECT * FROM clinic_db.user WHERE clinic_db.user.name = ?";
+		if (name == null || name.isEmpty()) {
+			return findAll();
+		}
+		List<User> users = new ArrayList<User>();
+
+		Statement stmt;
 		try {
-			conn = ConnectionClinic.getConnection();
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, name);
-
-			ResultSet rs = ps.executeQuery();
+			String sql = "SELECT * FROM clinic_db.user WHERE clinic_db.user.name like '%" + name + "%'";
+			stmt = ConnectionClinic.getConnection().createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				user = new User();
-				user.setId(rs.getInt(1));
-				user.setName(rs.getString(2));
-				user.setLogin(rs.getString(3));
-				user.setPassword(rs.getString(4));
+				User u = new User();
+				u.setId(rs.getInt(1));
+				u.setName(rs.getString(2));
+				u.setLogin(rs.getString(3));
+				u.setPassword(rs.getString(4));
+
+				users.add(u);
 			}
+			ConnectionClinic.getConnection().close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
-	}
 
+		return users;
+	}
 }

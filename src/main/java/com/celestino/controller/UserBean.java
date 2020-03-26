@@ -22,7 +22,7 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private User user;
-	private String name;
+	private String filter;
 
 	private List<User> users;
 
@@ -30,7 +30,7 @@ public class UserBean implements Serializable {
 	private UserRepository userRepository;
 
 	public void search() {
-		user = new UserRepository().findByName(name);
+		users = new UserRepository().findByName(filter);
 	}
 
 	public String updateUser(User user) {
@@ -64,6 +64,10 @@ public class UserBean implements Serializable {
 	public void limpar() {
 		this.user = new User();
 	}
+	
+	public void limparFiltro() {
+		this.filter = "";
+	}
 
 	public User getUser() {
 		return user;
@@ -78,6 +82,14 @@ public class UserBean implements Serializable {
 			users = userRepository.findAll();
 		}
 		return users;
+	}
+
+	public String getFilter() {
+		return filter;
+	}
+
+	public void setFilter(String filter) {
+		this.filter = filter;
 	}
 
 	public void onRowEdit(RowEditEvent event) {

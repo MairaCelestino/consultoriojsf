@@ -64,28 +64,23 @@
 		<h:form id="form-searchUser">
 			<p:panel header="Pesquisar User">
 				<div class="form-row">
-					<div class="form-group col-md-6">
-						<p:outputLabel for="nome">Nome: </p:outputLabel>
-						<p:inputText id="nome" value="#{userBean.user.name}">
-						</p:inputText>
-					</div>
-					<div>
-						<p:outputLabel for="id">Id : </p:outputLabel>
-						<p:inputText id="id" value="#{userBean.user.id}">
-						</p:inputText>
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<p:commandButton value="Pesquisar"
-								update="form-searchUser form-user form-users:tab-users"
-								action="#{userBean.search}" styleClass="btn btn-primary"
-								style="width:90%;" />
-						</div>
-						<div class="form-group col-md-6">
-							<p:commandButton value="Limpar" action="#{userBean.limpar()}"
-								resetValues="true" immediate="true"
-								update="form-searchUser form-user form-users:tab-users"
-								styleClass="btn btn-primary" style="width:90%;" />
+					<div class="col-md-8">
+						<div class="ui-g-12 ui-md-4">
+							<div class="ui-inputgroup">
+								<p:inputText placeholder="Digite um nome"
+									value="#{userBean.filter}" />
+								<p:commandLink action="#{userBean.search()}"
+									update="form-user form-users:tab-users"
+									style="margin-left:20px">
+									<h:graphicImage library="images" name="search.png" width="25"
+										alt="Pesquisar" title="Search" />
+								</p:commandLink>
+								<p:commandLink action="#{userBean.limparFiltro()}"
+									update="form-searchUser" style="margin-left:20px">
+									<h:graphicImage library="images" name="eraser.png" width="25"
+										alt="Limpar" title="Clear" />
+								</p:commandLink>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -98,6 +93,9 @@
 				rowsPerPageTemplate="5,10,15" paginatorPosition="bottom">
 				<f:facet name="header">
             			Users Cadastrados
+            			 <p:commandButton id="toggler" type="button"
+						value="Columns" icon="pi pi-align-justify" />
+					<p:columnToggler datasource="tab-users" trigger="toggler" />
 				</f:facet>
 
 				<p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" />
