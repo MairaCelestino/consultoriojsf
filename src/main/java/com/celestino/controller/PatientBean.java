@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.RowEditEvent;
 
 import com.celestino.model.Nationality;
 import com.celestino.model.Patient;
@@ -21,6 +25,9 @@ public class PatientBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Patient patient;
+
+	private List<Patient> patients;
+
 	private List<Nationality> nationalities;
 
 	@Inject
@@ -43,8 +50,27 @@ public class PatientBean implements Serializable {
 		return "";
 	}
 
+	public void delete(Long patient) {
+		patientRepository.deleteById(patient);
+		limpar();
+		patients = null;
+	}
+
+	public String updatePatient(Patient patient) {
+		patientRepository.updatePatiente(patient);
+		limpar();
+		return null;
+	}
+
 	public void limpar() {
 		this.patient = new Patient();
+	}
+
+	public List<Patient> getPatients() {
+		if (patients == null) {
+			patients = patientRepository.findAll();
+		}
+		return patients;
 	}
 
 	public Patient getPatient() {
@@ -56,8 +82,18 @@ public class PatientBean implements Serializable {
 	}
 
 	public List<Nationality> getNationalities() {
-		nationalities = nationalityRepository.findAll();		
+		nationalities = nationalityRepository.findAll();
 		return nationalities;
+	}
+
+	public void onRowEdit(RowEditEvent event) {
+		this.patient = (Patient) event.getObject();
+		updatePatient(patient);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "User " + patient.getPatientName() + " Upadeted!", ""));
+	}
+
+	public void onRowCancel(RowEditEvent event) {
 	}
 
 }

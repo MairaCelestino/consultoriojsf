@@ -16,6 +16,10 @@ public class Patient {
 	private String email;
 	private String phoneNumber;
 	private String nationality;
+	private String address;
+	private Integer postal_code;
+	private String country;
+	private Timestamp createdAt;
 
 	public String getMarital_status() {
 		return marital_status;
@@ -24,11 +28,6 @@ public class Patient {
 	public void setMarital_status(String marital_status) {
 		this.marital_status = marital_status;
 	}
-
-	private String address;
-	private Integer postal_code;
-	private String country;
-	private Timestamp createdAt;
 
 	public String getAddress() {
 		return address;
