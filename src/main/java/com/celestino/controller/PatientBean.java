@@ -16,6 +16,7 @@ import com.celestino.model.Nationality;
 import com.celestino.model.Patient;
 import com.celestino.model.repository.NationalityRepository;
 import com.celestino.model.repository.PatientRepository;
+import com.celestino.model.repository.UserRepository;
 import com.celestino.model.util.ClinicException;
 
 @Named
@@ -25,6 +26,8 @@ public class PatientBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Patient patient;
+
+	private String filter;
 
 	private List<Patient> patients;
 
@@ -50,6 +53,14 @@ public class PatientBean implements Serializable {
 		return "";
 	}
 
+	public void limparFiltro() {
+		this.filter = "";
+	}
+
+	public void search() {
+		patients = new PatientRepository().findByName(filter);
+	}
+
 	public void delete(Long patient) {
 		patientRepository.deleteById(patient);
 		limpar();
@@ -64,6 +75,14 @@ public class PatientBean implements Serializable {
 
 	public void limpar() {
 		this.patient = new Patient();
+	}
+
+	public String getFilter() {
+		return filter;
+	}
+
+	public void setFilter(String filter) {
+		this.filter = filter;
 	}
 
 	public List<Patient> getPatients() {

@@ -1,5 +1,11 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
+
+.Bimage{
+     background-image:url(#{request.contextPath}/resources/images/cliente2.jpg);
+ }
+
+
 @font-face {
 	font-family: Poppins-Regular;
 	src: url('../fonts/poppins/Poppins-Regular.ttf');

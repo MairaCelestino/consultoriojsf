@@ -148,18 +148,20 @@ public class PatientRepository implements Serializable {
 		}
 	}
 
-	public Patient findByName(String name) {
-		Connection conn = null;
-		PreparedStatement ps = null;
-		Patient patient = null;
+	public List<Patient> findByName(String name) {
 
-		String sql = "SELECT * FROM clinic_db.patient WHERE clinic_db.patient.patient_name = ?";
+		if (name == null || name.isEmpty()) {
+			return findAll();
+		}
+
+		List<Patient> patients = new ArrayList<Patient>();
+
+		Statement stmt;
+
 		try {
-			conn = ConnectionClinic.getConnection();
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, name);
-
-			ResultSet rs = ps.executeQuery();
+			String sql = "SELECT * FROM clinic_db.patient WHERE clinic_db.patient.patient_name like '%" + name + "%'";
+			stmt = ConnectionClinic.getConnection().createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Patient p = new Patient();
 				p.setId(rs.getInt(1));
@@ -177,10 +179,13 @@ public class PatientRepository implements Serializable {
 				p.setCountry(rs.getString(13));
 				p.setCreatedAt(rs.getTimestamp(14));
 
+				patients.add(p);
+
 			}
+			ConnectionClinic.getConnection().close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return patient;
+		return patients;
 	}
 }

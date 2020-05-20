@@ -17,7 +17,8 @@
 		<f:metadata>
 			<f:viewAction action="#{userBean.iniciar}" />
 		</f:metadata>
-		<p:panel header="Cadastrar User">
+		<p:panel id="user" header="Novo Usuário" toggleable="true"
+					collapsed="true" style="margin-bottom:20px">
 			<h:form id="form-user">
 				<div class="form-row">
 					<div class="form-group col-md-12">
@@ -93,9 +94,6 @@
 				rowsPerPageTemplate="5,10,15" paginatorPosition="bottom">
 				<f:facet name="header">
             			Users Cadastrados
-            			 <p:commandButton id="toggler" type="button"
-						value="Columns" icon="pi pi-align-justify" />
-					<p:columnToggler datasource="tab-users" trigger="toggler" />
 				</f:facet>
 
 				<p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" />
