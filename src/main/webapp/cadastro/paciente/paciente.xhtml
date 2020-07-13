@@ -11,136 +11,6 @@
 		<f:metadata>
 			<f:viewAction action="#{patientBean.iniciar}" />
 		</f:metadata>
-		<p:panel id="paciente" header="Novo Paciente" toggleable="true"
-			collapsed="true" style="margin-bottom:20px">
-			<h:form id="form-patient">
-				<div class="form-row">
-					<div class="form-group col-md-12">
-						<p:outputLabel for="name">Nome: </p:outputLabel>
-						<p:inputText id="name" required="true"
-							requiredMessage="Nome não pode ser vazio."
-							value="#{patientBean.patient.patientName}"
-							placeholder="Digite seu nome" styleClass="form-control" />
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="form-group col-md-3">
-						<p:outputLabel>Gênero: </p:outputLabel>
-						<p:selectOneRadio id="genero" unselectable="true"
-							value="#{patientBean.patient.gender}">
-							<f:selectItem itemLabel="Masculino" itemValue="M" />
-							<f:selectItem itemLabel="Feminino" itemValue="F" />
-						</p:selectOneRadio>
-					</div>
-					<div class="form-group col-md-3">
-						<p:outputLabel for="datanascimento" value="Data Nascimento: " />
-						<p:calendar id="datanascimento" locale="pt" navigator="true"
-							pattern="dd/MM/yyyy" value="#{patientBean.patient.bornDate}" />
-					</div>
-					<div class="form-group col-md-2">
-						<p:outputLabel for="estadociv" value="Estado Civil: " />
-						<p:selectOneMenu id="estadociv" style="width: 90%;"
-							value="#{patientBean.patient.marital_status}">
-							<f:selectItem itemLabel="Selecione" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItem itemLabel="Casado(a)" itemValue="c" />
-							<f:selectItem itemLabel="Divorciado(a)" itemValue="d" />
-							<f:selectItem itemLabel="Solteiro(a)" itemValue="s" />
-							<f:selectItem itemLabel="Viúvo(a)" itemValue="v" />
-						</p:selectOneMenu>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="form-group col-md-2">
-						<p:outputLabel for="identificacao" value="Identificação" />
-						<p:selectOneMenu id="identificacao" style="width: 90%;"
-							value="#{patientBean.patient.docType}">
-							<f:selectItem itemLabel="Selecione" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItem itemLabel="NIF" itemValue="N" />
-							<f:selectItem itemLabel="Passaporte" itemValue="P" />
-							<f:selectItem itemLabel="BI" itemValue="B" />
-							<f:selectItem itemLabel="AR" itemValue="A" />
-						</p:selectOneMenu>
-					</div>
-					<div class="form-group col-md-3">
-						<p:outputLabel for="documento" value="Nº do documento " />
-						<p:inputText id="documento" required="true"
-							requiredMessage="Documento não pode ser vazio."
-							value="#{patientBean.patient.docNumber}"
-							styleClass="form-control" style="height: auto;" />
-					</div>
-					<div class="form-group col-md-3">
-						<p:outputLabel for="nacionalidade" value="Nacionalidade: " />
-						<p:selectOneMenu id="nacionalidade" style="width: 90%;"
-							value="#{patientBean.patient.nationality}">
-							<f:selectItem itemLabel="Selecione" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItems var="n" itemLabel="#{n.description}"
-								itemValue="#{n.description}"
-								value="#{patientBean.nationalities}" />
-						</p:selectOneMenu>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="form-group col-md-5">
-						<p:outputLabel>E-mail: </p:outputLabel>
-						<p:inputText id="email" required="true"
-							requiredMessage="Email não pode ser vazio"
-							value="#{patientBean.patient.email}"
-							placeholder="name@example.com" styleClass="form-control" />
-					</div>
-					<div class="form-group col-md-3">
-						<p:outputLabel>Telemóvel: </p:outputLabel>
-						<p:inputMask id="phone" required="true"
-							value="#{patientBean.patient.phoneNumber}"
-							requiredMessage="Telemóvel não pode ser vazia."
-							mask="(+999) 9999-99999" class="form-control" />
-					</div>
-				</div>
-
-				<p:panel id="morada" header="Morada" toggleable="true"
-					collapsed="true" style="margin-bottom:20px">
-					<div class="form-row">
-						<div class="form-group col-md-12">
-							<p:outputLabel for="mor">Morada: </p:outputLabel>
-							<p:inputText id="mor" maxlength="50"
-								requiredMessage="Morada não pode ser vazia."
-								value="#{patientBean.patient.address}" styleClass="form-control" />
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-3">
-							<p:outputLabel>Código Postal: </p:outputLabel>
-							<p:inputText id="codigopostal"
-								value="#{patientBean.patient.postal_code}"
-								requiredMessage="Código Postal não pode ser vazio."
-								class="form-control" />
-						</div>
-						<div class="form-group col-md-3">
-							<p:outputLabel for="pais">País: </p:outputLabel>
-							<p:inputText id="pais" requiredMessage="País não pode ser vazio."
-								value="#{patientBean.patient.country}" styleClass="form-control" />
-						</div>
-					</div>
-				</p:panel>
-
-				<div class="form-row">
-					<div class="form-group col-md-2">
-						<p:commandButton value="Salvar" title="Gravar registro"
-							update="form-patient" action="#{patientBean.inserir()}"
-							styleClass="btn btn-primary" style="width:90%;" />
-					</div>
-					<div class="form-group col-md-2">
-						<p:commandButton value="Limpar" title="Limpa registro"
-							action="#{patientBean.limpar()}" resetValues="true"
-							immediate="true" update="form-patient"
-							styleClass="btn btn-primary" style="width:90%;" />
-					</div>
-				</div>
-			</h:form>
-		</p:panel>
-		<p:separator />
 		<h:form id="form-searchPatient">
 			<p:panel header="Pesquisar Paciente">
 				<div class="form-row">
@@ -150,8 +20,7 @@
 								<p:inputText placeholder="Digite um nome"
 									value="#{patientBean.filter}" />
 								<p:commandLink action="#{patientBean.search()}"
-									update="form-patient form-pacs:tab-pacs"
-									style="margin-left:20px">
+									update="form-pacs:tab-pacs" style="margin-left:20px">
 									<h:graphicImage library="images" name="search.png" width="25"
 										alt="Pesquisar" title="Search" />
 								</p:commandLink>
@@ -161,7 +30,8 @@
 										alt="Limpar" title="Clear" />
 								</p:commandLink>
 								<p:commandLink action="#{patientBean.limparFiltro()}"
-									update="form-searchPatient" style="margin-left:20px">
+									onclick="PF('dlg1').show();" update="form-searchPatient"
+									style="margin-left:20px">
 									<h:graphicImage library="images" name="add.png" width="25"
 										alt="Adicionar" title="Add" />
 								</p:commandLink>
@@ -237,7 +107,6 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-
 				<p:column width="40">
 					<p:commandLink action="#{patientBean.delete(p.id)}"
 						update="form-patient form-pacs:tab-pacs">
@@ -250,14 +119,144 @@
 				<p:column>
 					<p:commandButton value="Editar" type="button"
 						onclick="PF('dlg1').show();" />
-					<p:dialog header="Modal Dialog" widgetVar="dlg1" modal="true"
-						height="50">
-						<p:dataTable id="tab-pacs" var="p" editable="true"
-				resizableColumns="true" />
-						<h:outputText value="This is a Modal Dialog." />
-					</p:dialog>
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		<p:dialog header="Paciente" widgetVar="dlg1" modal="true" height="600"
+			width="1000" closable="true">
+			<h:form id="form-patient">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<p:outputLabel for="name">Nome: </p:outputLabel>
+						<p:inputText id="name" required="true"
+							validatorMessage="O Nome é Obrigatório!"
+							requiredMessage="Nome não pode ser vazio."
+							value="#{patientBean.patient.patientName}"
+							placeholder="Digite seu nome" styleClass="form-control" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<p:outputLabel>Gênero: </p:outputLabel>
+						<p:selectOneRadio id="genero" unselectable="true"
+							value="#{patientBean.patient.gender}">
+							<f:selectItem itemLabel="Masculino" itemValue="M" />
+							<f:selectItem itemLabel="Feminino" itemValue="F" />
+						</p:selectOneRadio>
+					</div>
+					<div class="form-group col-md-3">
+						<p:outputLabel for="datanascimento" value="Data Nascimento: " />
+						<br />
+						<p:calendar id="datanascimento" locale="pt" navigator="true"
+							style="width:90%" pattern="dd/MM/yyyy"
+							value="#{patientBean.patient.bornDate}" />
+					</div>
+					<div class="form-group col-md-5">
+						<p:outputLabel for="estadociv" value="Estado Civil: " />
+						<br />
+						<p:selectOneMenu id="estadociv" style="width:100%"
+							value="#{patientBean.patient.marital_status}">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItem itemLabel="Casado(a)" itemValue="c" />
+							<f:selectItem itemLabel="Divorciado(a)" itemValue="d" />
+							<f:selectItem itemLabel="Solteiro(a)" itemValue="s" />
+							<f:selectItem itemLabel="Viúvo(a)" itemValue="v" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<p:outputLabel for="nacionalidade" value="Nacionalidade: " />
+						<br />
+						<p:selectOneMenu id="nacionalidade" style="width: 90%;"
+							value="#{patientBean.patient.nationality}">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems var="n" itemLabel="#{n.description}"
+								itemValue="#{n.description}"
+								value="#{patientBean.nationalities}" />
+						</p:selectOneMenu>
+					</div>
+					<div class="form-group col-md-3">
+						<p:outputLabel for="identificacao" value="Identificação: " />
+						<br />
+						<p:selectOneMenu id="identificacao" style="width: 90%"
+							value="#{patientBean.patient.docType}">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItem itemLabel="NIF" itemValue="N" />
+							<f:selectItem itemLabel="Passaporte" itemValue="P" />
+							<f:selectItem itemLabel="BI" itemValue="B" />
+							<f:selectItem itemLabel="AR" itemValue="A" />
+						</p:selectOneMenu>
+					</div>
+					<div class="form-group col-md-5">
+						<p:outputLabel for="documento" value="Nº do documento: " />
+						<p:inputText id="documento" required="true"
+							validatorMessage="O Documento é Obrigatório!"
+							requiredMessage="Documento não pode ser vazio."
+							value="#{patientBean.patient.docNumber}"
+							styleClass="form-control" style="height: auto;" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-7">
+						<p:outputLabel>E-mail: </p:outputLabel>
+						<p:inputText id="email" required="true"
+							requiredMessage="Email não pode ser vazio"
+							value="#{patientBean.patient.email}"
+							placeholder="name@example.com" styleClass="form-control" />
+					</div>
+					<div class="form-group col-md-5">
+						<p:outputLabel>Telemóvel: </p:outputLabel>
+						<p:inputMask id="phone" required="true"
+							value="#{patientBean.patient.phoneNumber}"
+							requiredMessage="Telemóvel não pode ser vazia."
+							mask="(+999) 9999-99999" class="form-control" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<p:outputLabel for="mor">Morada: </p:outputLabel>
+						<p:inputText id="mor" maxlength="50"
+							requiredMessage="Morada não pode ser vazia."
+							value="#{patientBean.patient.address}" styleClass="form-control" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-3">
+						<p:outputLabel>Código Postal: </p:outputLabel>
+						<p:inputText id="codigopostal"
+							value="#{patientBean.patient.postal_code}"
+							requiredMessage="Código Postal não pode ser vazio."
+							class="form-control" />
+					</div>
+					<div class="form-group col-md-3">
+						<p:outputLabel for="pais">País: </p:outputLabel>
+						<p:inputText id="pais" requiredMessage="País não pode ser vazio."
+							value="#{patientBean.patient.country}" styleClass="form-control" />
+					</div>
+					<div class="form-group col-md-5">
+						<p:message for="name" />
+						<p:message for="documento" />
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-2">
+						<p:commandButton value="Salvar" title="Gravar registro" 
+							update="form-patient" action="#{patientBean.inserir()}"
+							styleClass="btn btn-primary" style="width:90%;" />
+					</div>
+					<div class="form-group col-md-2">
+						<p:commandButton value="Limpar" title="Limpa registro"
+							action="#{patientBean.limpar()}" resetValues="true"
+							immediate="true" update="form-patient"
+							styleClass="btn btn-primary" style="width:90%;" />
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
 	</ui:define>
 </ui:composition>

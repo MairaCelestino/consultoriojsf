@@ -7,51 +7,51 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 	<h:outputStylesheet library="vendor"
 		name="/bootstrap/css/bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
-<!-- <h:body style="background-color: #c8cbcf"> -->
-<h:body styleClass="Bimage">
+<h:body styleClass="img-body">
 	<h:form>
 		<div class="container" style="width: 25%; margin-top: 7%;">
-
 			<p:focus for="user" />
-			<div class="form-group flex-items-xs-center"
-				style="border-style: solid; padding: 8%; color: #4e555b">
+			<div class="form-group flex-items-xs-center login-box">
 				<div>
-					<h2 align="center">Login</h2>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span>
-							<p:inputText id="user" title="Digite seu User"
-								value="#{loginBean.user}" styleClass="form-control"
-								placeholder="Username" />
+					<div class="internal-login-box">
+						<h2 align="center">Login</h2>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-user"></i></span>
+								<p:inputText id="user" title="Digite seu User"
+									value="#{loginBean.user}" styleClass="form-control"
+									placeholder="Username" />
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-lock"></i></span>
-							<p:password id="password" title="Digite seu password"
-								value="#{loginBean.password}" styleClass="form-control"
-								placeholder="Password" />
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-lock"></i></span>
+								<p:password id="password" title="Digite seu password"
+									value="#{loginBean.password}" styleClass="form-control"
+									placeholder="Password" />
+							</div>
 						</div>
-					</div>
-					<div align="center" class="form-group">
-						<p:commandButton action="#{loginBean.autenticar()}"
-							title="Acessar o sistema" value="Login"
-							styleClass="btn btn-primary btn-sm" />
-						<p:link value="Forgot password?" disabled="true"
-							style="margin-left: 10px;" />
+						<div align="center" class="form-group">
+							<p:commandButton action="#{loginBean.autenticar()}"
+								title="Acessar o sistema" value="Login"
+								styleClass="btn btn-primary btn-sm" />
+							<p:link value="Forgot password?" disabled="true"
+								style="margin-left: 10px;" />
+						</div>
+
 					</div>
 
 				</div>
-
-			</div>
-			<div class="container col-sm-12">
-				<p:messages id="messages" showDetail="true" closable="true"
-					style="width: 100%;">
-					<p:autoUpdate />
-				</p:messages>
+				<div class="container col-sm-12">
+					<p:messages id="messages" showDetail="true" closable="true"
+						style="width: 100%;">
+						<p:autoUpdate />
+					</p:messages>
+				</div>
 			</div>
 		</div>
 

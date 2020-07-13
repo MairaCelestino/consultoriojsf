@@ -1,10 +1,9 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
-
-.Bimage{
-     background-image:url(#{request.contextPath}/resources/images/cliente2.jpg);
- }
-
+.Bimage {
+	background-image:
+		url(#{request.contextPath}/resources/images/cliente2.jpg);
+}
 
 @font-face {
 	font-family: Poppins-Regular;
@@ -35,7 +34,7 @@
 }
 
 body, html {
-	height: 100%;
+	min-height: 100%;
 	font-family: Poppins-Regular, sans-serif;
 }
 
@@ -535,4 +534,18 @@ iframe {
 	text-align: right;
 	position: static;
 	bottom: 0;
+}
+
+.login-box {
+	box-shadow: 2px 2px 10px;
+	margin: 0 auto;
+}
+
+.img-body {
+	background-image:url(#{request.contextPath}/resources/images/fundopreto.jpg);
+}
+
+.internal-login-box{
+	background-color: white;
+	padding: 5 20 10 20;
 }
