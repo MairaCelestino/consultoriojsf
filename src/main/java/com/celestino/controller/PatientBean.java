@@ -10,14 +10,15 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.RowEditEvent;
 
 import com.celestino.model.Nationality;
 import com.celestino.model.Patient;
 import com.celestino.model.repository.NationalityRepository;
 import com.celestino.model.repository.PatientRepository;
-import com.celestino.model.repository.UserRepository;
 import com.celestino.model.util.ClinicException;
+import com.sun.xml.internal.ws.client.RequestContext;
 
 @Named
 @ViewScoped
@@ -43,9 +44,28 @@ public class PatientBean implements Serializable {
 		this.patient = new Patient();
 	}
 
-	public String inserir() throws ParseException {
+	public String save() throws ParseException {
 		try {
-			patientRepository.savePatient(patient);
+			if (patient.getId() == null) {
+				patientRepository.savePatient(patient);
+				PrimeFaces current = PrimeFaces.current();
+				current.executeScript("PF('dlg1').hide()");
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Paciente Cadastrado com sucesso!!"));
+			} else {
+				patientRepository.updatePatiente(patient);
+				PrimeFaces current = PrimeFaces.current();
+				current.executeScript("PF('dlg1').hide()");
+				FacesMessage fmsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Paciente Atualizado com sucesso!!",
+						null);
+				FacesContext.getCurrentInstance().addMessage(null, fmsg);
+				// FacesContext.getCurrentInstance().addMessage(null,
+				// new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Paciente Atualizado
+				// com sucesso!!"));
+			}
+
+			search();
+			return "";
 		} catch (ClinicException e) {
 			e.printStackTrace();
 		}
@@ -67,10 +87,8 @@ public class PatientBean implements Serializable {
 		patients = null;
 	}
 
-	public String updatePatient(Patient patient) {
-		patientRepository.updatePatiente(patient);
-		limpar();
-		return null;
+	public void updatePatient(Patient patient) {
+		this.patient = patient;
 	}
 
 	public void limpar() {

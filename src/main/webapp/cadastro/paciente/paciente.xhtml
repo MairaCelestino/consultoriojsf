@@ -12,6 +12,7 @@
 			<f:viewAction action="#{patientBean.iniciar}" />
 		</f:metadata>
 		<h:form id="form-searchPatient">
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" sticky="true" redisplay="true" />
 			<p:panel header="Pesquisar Paciente">
 				<div class="form-row">
 					<div class="col-md-8">
@@ -29,8 +30,8 @@
 									<h:graphicImage library="images" name="eraser.png" width="25"
 										alt="Limpar" title="Clear" />
 								</p:commandLink>
-								<p:commandLink action="#{patientBean.limparFiltro()}"
-									onclick="PF('dlg1').show();" update="form-searchPatient"
+								<p:commandLink action="#{patientBean.iniciar()}"
+									onclick="PF('dlg1').show();" update="form-patient"
 									style="margin-left:20px">
 									<h:graphicImage library="images" name="add.png" width="25"
 										alt="Adicionar" title="Add" />
@@ -117,8 +118,9 @@
 					</p:commandLink>
 				</p:column>
 				<p:column>
-					<p:commandButton value="Editar" type="button"
-						onclick="PF('dlg1').show();" />
+					<p:commandLink value="Editar"
+						action="#{patientBean.updatePatient(p)}"
+						onclick="PF('dlg1').show();" update="form-patient" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
@@ -245,14 +247,20 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-2">
-						<p:commandButton value="Salvar" title="Gravar registro" 
-							update="form-patient" action="#{patientBean.inserir()}"
-							styleClass="btn btn-primary" style="width:90%;" />
+						<p:commandButton value="Salvar" title="Gravar registro"
+							update="form-patient form-pacs:tab-pacs"
+							action="#{patientBean.save()}" styleClass="btn btn-primary"
+							style="width:90%;" />
 					</div>
 					<div class="form-group col-md-2">
 						<p:commandButton value="Limpar" title="Limpa registro"
 							action="#{patientBean.limpar()}" resetValues="true"
 							immediate="true" update="form-patient"
+							styleClass="btn btn-primary" style="width:90%;" />
+					</div>
+					<div class="form-group col-md-2">
+						<p:commandButton value="Cancelar" title="Cancelar registro"
+							immediate="true" onclick="PF('dlg1').hide();"
 							styleClass="btn btn-primary" style="width:90%;" />
 					</div>
 				</div>

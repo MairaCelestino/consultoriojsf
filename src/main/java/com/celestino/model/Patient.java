@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Patient {
 
-	private long id;
+	private Long id;
 	private String patientName;
 	private String gender;
 	private Date bornDate;
@@ -53,11 +53,11 @@ public class Patient {
 		this.address = address;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

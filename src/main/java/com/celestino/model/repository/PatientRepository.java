@@ -34,7 +34,7 @@ public class PatientRepository implements Serializable {
 
 			while (rs.next()) {
 				Patient p = new Patient();
-				p.setId(rs.getInt(1));
+				p.setId(rs.getLong(1));
 				p.setPatientName(rs.getString(2));
 				p.setGender(rs.getString(3));
 				p.setBornDate(rs.getDate(4));
@@ -107,14 +107,14 @@ public class PatientRepository implements Serializable {
 		PreparedStatement ps = null;
 
 		try {
-			String sql = "Update patient set patient_name=? " + "gender=?" + "born_date=?" + "marital_status=?"
-					+ "doc_type=?" + "doc_number=?" + "nationality=?" + "email=?" + "phone_number=?" + "address=?"
-					+ "postal_code" + "country=?" + "where id=?";
+			String sql = "Update patient set patient_name=? " + ",gender=?" + ",born_date=?" + ",marital_status=?"
+					+ ",doc_type=?" + ",doc_number=?" + ",nationality=?" + ",email=?" + ",phone_number=?" + ",address=?"
+					+ ",postal_code=?" + ",country=?" + "where id=?";
 			conn = ConnectionClinic.getConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, patient.getPatientName());
 			ps.setString(2, patient.getGender());
-			ps.setDate(3, (Date) patient.getBornDate());
+			ps.setDate(3, new Date(patient.getBornDate().getTime()));
 			ps.setString(4, patient.getMarital_status());
 			ps.setString(5, patient.getDocType());
 			ps.setString(6, patient.getDocNumber());
@@ -124,6 +124,7 @@ public class PatientRepository implements Serializable {
 			ps.setString(10, patient.getAddress());
 			ps.setInt(11, patient.getPostal_code());
 			ps.setString(12, patient.getCountry());
+			ps.setLong(13, patient.getId());
 
 			ps.executeUpdate();
 
@@ -164,7 +165,7 @@ public class PatientRepository implements Serializable {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Patient p = new Patient();
-				p.setId(rs.getInt(1));
+				p.setId(rs.getLong(1));
 				p.setPatientName(rs.getString(2));
 				p.setGender(rs.getString(3));
 				p.setBornDate(rs.getDate(4));
