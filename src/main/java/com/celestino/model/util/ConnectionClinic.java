@@ -10,7 +10,7 @@ public class ConnectionClinic {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(
                     //"jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "M@ira160491");
-                    "jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "M@ira160491");
+                    "jdbc:mysql://localhost:3306/CLINIC_DB?useTimezone=true&serverTimezone=UTC", "root", "");
         } catch (ClassNotFoundException e) {
             System.out.println("Not connected!!");
             throw new SQLException(e.getMessage());
