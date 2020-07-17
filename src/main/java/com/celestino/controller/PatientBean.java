@@ -48,20 +48,14 @@ public class PatientBean implements Serializable {
 		try {
 			if (patient.getId() == null) {
 				patientRepository.savePatient(patient);
-				PrimeFaces current = PrimeFaces.current();
-				current.executeScript("PF('dlg1').hide()");
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Paciente Cadastrado com sucesso!!"));
+				FacesContext.getCurrentInstance().addMessage("growl-diag-pat",
+						new FacesMessage("Paciente Cadastrado com sucesso!", "to growl"));
+				closeDialog("dlg1");
 			} else {
 				patientRepository.updatePatiente(patient);
-				PrimeFaces current = PrimeFaces.current();
-				current.executeScript("PF('dlg1').hide()");
-				FacesMessage fmsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Paciente Atualizado com sucesso!!",
-						null);
-				FacesContext.getCurrentInstance().addMessage(null, fmsg);
-				// FacesContext.getCurrentInstance().addMessage(null,
-				// new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Paciente Atualizado
-				// com sucesso!!"));
+				FacesContext.getCurrentInstance().addMessage("growl-diag-pat",
+						new FacesMessage("Paciente atualizado com sucesso!", "to growl"));
+				closeDialog("dlg1");
 			}
 
 			search();
@@ -71,6 +65,11 @@ public class PatientBean implements Serializable {
 		}
 		limpar();
 		return "";
+	}
+
+	private void closeDialog(String dialogName) {
+		PrimeFaces current = PrimeFaces.current();
+		current.executeScript("PF('" + dialogName + "').hide()");
 	}
 
 	public void limparFiltro() {
@@ -85,6 +84,8 @@ public class PatientBean implements Serializable {
 		patientRepository.deleteById(patient);
 		limpar();
 		patients = null;
+		FacesContext.getCurrentInstance().addMessage("growl-pac",
+				new FacesMessage("Paciente removido com sucesso!", "to growl"));
 	}
 
 	public void updatePatient(Patient patient) {

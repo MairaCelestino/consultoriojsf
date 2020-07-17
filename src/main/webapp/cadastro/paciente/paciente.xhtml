@@ -12,7 +12,6 @@
 			<f:viewAction action="#{patientBean.iniciar}" />
 		</f:metadata>
 		<h:form id="form-searchPatient">
-			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" sticky="true" redisplay="true" />
 			<p:panel header="Pesquisar Paciente">
 				<div class="form-row">
 					<div class="col-md-8">
@@ -43,6 +42,7 @@
 			</p:panel>
 		</h:form>
 		<h:form id="form-pacs">
+			<p:growl for="growl-pac" />
 			<p:dataTable id="tab-pacs" var="p" editable="true"
 				resizableColumns="true" value="#{patientBean.patients}"
 				paginator="true" rows="5" rowsPerPageTemplate="5,10,15"
@@ -110,7 +110,7 @@
 				</p:column>
 				<p:column width="40">
 					<p:commandLink action="#{patientBean.delete(p.id)}"
-						update="form-patient form-pacs:tab-pacs">
+						update="form-pacs">
 						<h:graphicImage library="images" name="icon_delete.png" width="15"
 							alt="Responsive image" title="Excluir" />
 						<p:confirm header="Confirmation"
@@ -127,6 +127,7 @@
 		<p:dialog header="Paciente" widgetVar="dlg1" modal="true" height="80%"
 			width="80%" closable="true">
 			<h:form id="form-patient">
+				<p:growl for="growl-diag-pat" />
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<p:outputLabel for="name">Nome: </p:outputLabel>
