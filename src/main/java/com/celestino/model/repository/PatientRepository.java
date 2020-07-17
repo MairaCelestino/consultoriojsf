@@ -160,7 +160,8 @@ public class PatientRepository implements Serializable {
 		Statement stmt;
 
 		try {
-			String sql = "SELECT * FROM clinic_db.patient WHERE clinic_db.patient.patient_name like '%" + name + "%'";
+			String sql = "SELECT * FROM clinic_db.patient WHERE UPPER(clinic_db.patient.patient_name) like '%"
+					+ name.toUpperCase() + "%'";
 			stmt = ConnectionClinic.getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
