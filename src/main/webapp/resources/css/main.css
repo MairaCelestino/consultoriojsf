@@ -35,6 +35,7 @@
 
 body, html {
 	min-height: 100%;
+	font-size: 14px;
 	font-family: Poppins-Regular, sans-serif;
 }
 
