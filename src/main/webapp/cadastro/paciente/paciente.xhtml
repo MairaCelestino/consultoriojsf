@@ -33,8 +33,10 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<p:commandButton  value="Novo Paciente" action="#{patientBean.iniciar()}"
-							update="form-patient" onclick="PF('dlg1').show();" style="margin-right:20px;"/>
+						<p:commandButton title="Cadastrar Novo Paciente"
+							value="Novo Paciente" action="#{patientBean.iniciar()}"
+							update="form-patient" onclick="PF('dlg1').show();"
+							style="margin-right:20px;" />
 					</div>
 				</div>
 			</p:panel>
@@ -211,14 +213,15 @@
 							style="width:90%;" />
 					</div>
 					<div class="form-group col-md-2">
-						<p:commandButton value="Limpar" title="Limpa registro"
-							action="#{patientBean.limpar()}" resetValues="true"
-							immediate="true" update="form-patient"
+						<p:commandButton value="Cancelar" title="Cancelar registro"
+							immediate="true" onclick="PF('dlg1').hide();"
 							styleClass="btn btn-primary" style="width:90%;" />
 					</div>
 					<div class="form-group col-md-2">
-						<p:commandButton value="Cancelar" title="Cancelar registro"
-							immediate="true" onclick="PF('dlg1').hide();"
+						<p:commandButton value="Limpar" title="Limpa registro"
+							action="#{patientBean.limpar()}" resetValues="true"
+							immediate="true" update="form-patient"
+							rendered="#{patientBean.patient.id == null}"
 							styleClass="btn btn-primary" style="width:90%;" />
 					</div>
 				</div>
