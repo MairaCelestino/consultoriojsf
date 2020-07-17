@@ -14,7 +14,7 @@
 		<h:form id="form-searchPatient">
 			<p:panel header="Pesquisar Paciente">
 				<div class="form-row">
-					<div class="col-md-8">
+					<div class="col-md-10">
 						<div class="ui-g-12 ui-md-4">
 							<div class="ui-inputgroup">
 								<p:inputText placeholder="Digite um nome"
@@ -29,98 +29,55 @@
 									<h:graphicImage library="images" name="eraser.png" width="25"
 										alt="Limpar" title="Clear" />
 								</p:commandLink>
-								<p:commandLink action="#{patientBean.iniciar()}"
-									onclick="PF('dlg1').show();" update="form-patient"
-									style="margin-left:20px">
-									<h:graphicImage library="images" name="add.png" width="25"
-										alt="Adicionar" title="Add" />
-								</p:commandLink>
 							</div>
 						</div>
+					</div>
+					<div class="col-md-2">
+						<p:commandButton  value="Novo Paciente" action="#{patientBean.iniciar()}"
+							update="form-patient" onclick="PF('dlg1').show();" style="margin-right:20px;"/>
 					</div>
 				</div>
 			</p:panel>
 		</h:form>
 		<h:form id="form-pacs">
 			<p:growl for="growl-pac" />
-			<p:dataTable id="tab-pacs" var="p" editable="true"
-				resizableColumns="true" value="#{patientBean.patients}"
-				paginator="true" rows="5" rowsPerPageTemplate="5,10,15"
+			<p:dataTable id="tab-pacs" var="p" resizableColumns="true"
+				style="width:100%" value="#{patientBean.patients}" paginator="true"
+				rows="5" reflow="true" rowsPerPageTemplate="5,10,15"
 				paginatorPosition="bottom">
 				<f:facet name="header">
             			Pacientes Cadastrados
 				</f:facet>
-
-				<p:ajax event="rowEdit" listener="#{patientBean.onRowEdit}" />
-				<p:ajax event="rowEditCancel" listener="#{patientBean.onRowCancel}" />
-
-				<p:column filterBy="#{p.id}" headerText="Id" sortBy="#{p.id}"
-					width="70" style="text-align:center;">
-					<h:outputText value="#{p.id}" />
+				<p:column headerText="Nome" width="40%">
+					<h:outputText value="#{p.patientName}" />
 				</p:column>
-				<p:column headerText="Nome">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{p.patientName}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{p.patientName}" />
-						</f:facet>
-					</p:cellEditor>
+				<p:column headerText="Identificação" width="15%"
+					style="text-align: center">
+					<h:outputText value="#{p.docNumber}" />
 				</p:column>
-				<p:column headerText="Identificação">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{p.docNumber}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{p.docNumber}" />
-						</f:facet>
-					</p:cellEditor>
+				<p:column headerText="Telemóvel" width="15%"
+					style="text-align: center">
+					<h:outputText value="#{p.phoneNumber}" />
 				</p:column>
-				<p:column headerText="Telemóvel">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{p.phoneNumber}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{p.phoneNumber}" />
-						</f:facet>
-					</p:cellEditor>
+				<p:column headerText="Data Nasc" width="10%"
+					style="text-align: center">
+					<h:outputText value="#{p.bornDate}" />
 				</p:column>
-				<p:column headerText="Data Nasc">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{p.bornDate}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{p.bornDate}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:column headerText="E-mail">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{p.email}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{p.email}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:column width="40">
+				<p:column style="text-align: center">
 					<p:commandLink action="#{patientBean.delete(p.id)}"
 						update="form-pacs">
 						<h:graphicImage library="images" name="icon_delete.png" width="15"
-							alt="Responsive image" title="Excluir" />
+							title="Excluir" />
 						<p:confirm header="Confirmation"
 							message="Are you sure you want to delete?" icon="ui-icon-alert" />
 					</p:commandLink>
 				</p:column>
-				<p:column>
-					<p:commandLink value="Editar"
-						action="#{patientBean.updatePatient(p)}"
-						onclick="PF('dlg1').show();" update="form-patient" />
+				<p:column style="text-align: center">
+					<p:commandLink action="#{patientBean.updatePatient(p)}"
+						onclick="PF('dlg1').show();" update="form-patient">
+						<h:graphicImage library="images" name="icon_edit.png" width="15"
+							title="Editar" />
+					</p:commandLink>
 				</p:column>
 			</p:dataTable>
 		</h:form>

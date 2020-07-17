@@ -49,12 +49,12 @@ public class PatientBean implements Serializable {
 			if (patient.getId() == null) {
 				patientRepository.savePatient(patient);
 				FacesContext.getCurrentInstance().addMessage("growl-diag-pat",
-						new FacesMessage("Paciente Cadastrado com sucesso!", "to growl"));
+						new FacesMessage(patient.getPatientName() + " cadastrado com sucesso!", "to growl"));
 				closeDialog("dlg1");
 			} else {
 				patientRepository.updatePatiente(patient);
-				FacesContext.getCurrentInstance().addMessage("growl-diag-pat",
-						new FacesMessage("Paciente atualizado com sucesso!", "to growl"));
+				FacesContext.getCurrentInstance().addMessage("growl-diag-pat", new FacesMessage(
+						patient.getPatientName().toUpperCase() + " atualizado com sucesso!", "to growl"));
 				closeDialog("dlg1");
 			}
 
@@ -122,16 +122,6 @@ public class PatientBean implements Serializable {
 	public List<Nationality> getNationalities() {
 		nationalities = nationalityRepository.findAll();
 		return nationalities;
-	}
-
-	public void onRowEdit(RowEditEvent event) {
-		this.patient = (Patient) event.getObject();
-		updatePatient(patient);
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "User " + patient.getPatientName() + " Upadeted!", ""));
-	}
-
-	public void onRowCancel(RowEditEvent event) {
 	}
 
 }
